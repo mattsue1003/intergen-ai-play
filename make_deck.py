@@ -59,8 +59,17 @@ css = """
 .ladder div i{font-style:normal;width:42px;height:42px;border-radius:10px;display:grid;place-items:center;font-family:var(--f-display);font-weight:900;color:#fff;background:var(--c)}
 .ladder div b{font-size:17px}.ladder div small{display:block;color:var(--muted);font-size:13.5px;line-height:1.45}
 .ladder div.mid{border:2px solid var(--ink)}
+.excol{display:flex;flex-direction:column;gap:10px;min-height:0}.slide>.cols>.excol{justify-content:flex-start}.excol>.exgrid{flex:1;min-height:0}
+.easy{display:grid;grid-template-columns:auto repeat(3,minmax(0,1fr));gap:8px}
+.easy .elab{writing-mode:vertical-rl;background:var(--c);color:#fff;font-weight:700;font-size:13px;letter-spacing:.1em;border-radius:8px;padding:8px 4px;text-align:center}
+.ez{display:grid;grid-template-columns:62px minmax(0,1fr) 50px;gap:7px;align-items:center;border:2px dashed color-mix(in srgb,var(--c) 70%,var(--paper));border-radius:10px;padding:6px;background:color-mix(in srgb,var(--c) 6%,var(--paper));text-decoration:none;color:var(--ink)}
+.ez:hover{border-style:solid}
+.ez .t{width:62px;height:46px;object-fit:cover;object-position:top;border-radius:4px;display:block}
+.ez b{display:block;font-size:13.5px;line-height:1.25}.ez small{display:block;font-size:11.5px;color:var(--muted);line-height:1.3}
+.ez .q{width:50px;height:50px;background:#fff;border-radius:3px}
+@media (max-width:900px){.easy{grid-template-columns:minmax(0,1fr)}.easy .elab{writing-mode:horizontal-tb}}
 /* 七種教案總覽 */
-.types7{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;flex:1;min-height:0;max-height:540px}
+.types7{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;flex:1;min-height:0;max-height:540px}
 .t7{display:flex;flex-direction:column;gap:6px;padding:16px;border-radius:12px;background:color-mix(in srgb,var(--c) 10%,var(--paper));border:1px solid color-mix(in srgb,var(--c) 35%,var(--paper));text-decoration:none;color:var(--ink)}
 .t7:hover{border-color:var(--ink)}
 .t7 i{font-style:normal;font-family:var(--f-display);font-weight:900;font-size:28px;color:var(--c);line-height:1}
@@ -95,7 +104,12 @@ def exs(items, m=3, tight=False):
     cls = "exgrid tight" if tight else "exgrid"
     return f'<div class="{cls}" style="--m:{m}">' + "".join(ex(*it) for it in items) + "</div>"
 
-def typeslide(no, color, title, h2, keys, tools, plab, ptext, items, m=3, note=None):
+def ez(slug, title, desc):
+    QR_LIST.append((slug, GH + slug + "/"))
+    return (f'<a class="ez" href="{GH}{slug}/" target="_blank" rel="noopener"><img class="t" src="img/ex/{slug}.jpg" alt="{esc(title)} 畫面" loading="lazy">'
+            f'<span><b>{esc(title)}</b><small>{esc(desc)}</small></span><img class="q" src="img/qr/{slug}.svg" alt="{esc(title)} QR code"></a>')
+
+def typeslide(no, color, title, h2, keys, tools, plab, ptext, items, m=3, note=None, easy=None):
     k = "".join(f'<li><i>{i+1}</i><span>{t}</span></li>' for i, t in enumerate(keys))
     tl = "".join(f'<span class="tag">{t}</span>' for t in tools)
     nt = f'<div class="note" style="--c:{color}"><b>{note[0]}</b><span>{note[1]}</span></div>' if note else ""
@@ -109,7 +123,7 @@ def typeslide(no, color, title, h2, keys, tools, plab, ptext, items, m=3, note=N
       <div class="prompt"><div class="lab">{plab}<button class="copy">複製</button></div>{ptext}</div>
       {nt}
     </div>
-    {exs(items, m)}
+    {'<div class="excol"><div class="easy"><span class="elab">最簡單先上手</span>' + "".join(ez(*e) for e in easy) + '</div>' + exs(items, m) + '</div>' if easy else exs(items, m)}
   </div>
 </section>
 '''
@@ -132,7 +146,7 @@ S.append(f'''<!-- 1 封面 -->
   <div class="eyebrow"><span class="sq"></span>家政群科中心 研習</div>
   <h1><span class="en">PLAY <b>×</b> AI</span>玩轉世代</h1>
   <p class="lede" style="font-size:24px;color:var(--ink);font-weight:900">AI 賦能幼老代間遊戲與創意教學設計</p>
-  <p class="lede">一副 1–16 數字牌、一副撲克牌，就能玩出祖孫都能玩的遊戲。再用 Gemini、ChatGPT、OpenCode、Canva，把點子做成簡報、影片、音樂、動畫、紙本、桌遊、互動衛教、看圖猜謎八種教案。</p>
+  <p class="lede">一副 1–16 數字牌、一副撲克牌，就能玩出祖孫都能玩的遊戲。再用 Gemini、ChatGPT、OpenCode、Canva，把點子做成簡報、影片、音樂、動畫、紙本、桌遊、互動衛教、看圖猜謎九種教案。</p>
   <div class="meta">
     <div><small>日期</small><strong>11/15（日）</strong></div>
     <div><small>時間</small><strong>09:00–12:00</strong></div>
@@ -419,7 +433,7 @@ S.append(typeslide("①", "var(--mag)", "教案設計① 簡報遊戲", "簡報�
      ("judgment-ppt-game","分一分 動一動","分類反應：看到就做動作"),
      ("dance-game-slides","九宮格跳舞機","跟著格子踩，簡報版跳舞機"),
      ("arrow-slides-arm-leg","手忙腳亂","箭頭方向＋左右手腳反應"),
-     ("3x3shapecolorg","九宮格形色排排樂","大螢幕出題，團體同樂")], note=("代間玩法","孫子按下一題、阿公阿嬤搶答；或分祖孫兩隊，答對的人帶大家做一個動作。")))
+     ("3x3shapecolorg","九宮格形色排排樂","大螢幕出題，團體同樂")], note=("代間玩法","孫子按下一題、阿公阿嬤搶答；或分祖孫兩隊，答對的人帶大家做一個動作。"), easy=[('arrowcolor', '箭頭方向遊戲', '看箭頭，手比方向'), ('wordcolor', '顏色辨識遊戲', '說出字的顏色'), ('differentanimal', '動物符號找碴', '找出不一樣的')]))
 
 S.append(keep("實作④ 做互動網頁",
     ('實作④　做互動網頁</div>\n  <h2>同一招做互動網頁：團康用的「六力小問答」</h2>', '教案設計①　實作：Gemini Canvas</div>\n  <h2>Gemini Canvas：講清楚玩法，兩分鐘做出搶答遊戲</h2>'),
@@ -428,7 +442,20 @@ S.append(keep("實作④ 做互動網頁",
     ('''提示詞・團康互動網頁<button class="copy">複製</button></div>幫我做一個互動網頁：「ICOPE 六力小問答」，給社區長輩團康用。認知、行動、營養、視力、聽力、情緒各 2 題是非題，大字、大按鈕，答對會放煙火並顯示一句衛教重點，可分兩組計分。繁體中文，溫暖配色。''',
      '''提示詞・祖孫搶答網頁<button class="copy">複製</button></div>幫我做一個互動網頁：「阿公阿嬤的童年 vs 我的童年」搶答遊戲，給祖孫一起玩。10 題二選一（例：小時候玩彈珠還是玩平板？），大字、大按鈕，答完顯示一句「請阿公阿嬤分享當年」的提問，可分祖孫兩隊計分，答對放煙火。繁體中文，溫暖配色。''')))
 
-S.append(typeslide("②", "var(--blue)", "教案設計② 簡報影片", "簡報影片：一段影片、一個問題，看完就聊",
+S.append(typeslide("②", "var(--amber)", "教案設計② 遊戲團康", "遊戲團康：規則一句話，全場馬上動起來",
+    ["<b>規則一句話</b>：「炸彈傳到你，說一個水果」，不用看說明書", "<b>輪流、傳遞、配對</b>：傳炸彈、翻牌對對碰、輪流抽題，人人有份", "<b>輸了也好笑</b>：懲罰是做一個動作或唱一句歌，不淘汰人"],
+    ["Gemini Canvas", "ChatGPT 出題", "教室螢幕計時"],
+    "提示詞・傳炸彈網頁", "幫我做一個「聯想傳炸彈」團康網頁：畫面中央一顆大炸彈和一個主題（例如水果、台灣小吃、動物），按開始後倒數隨機 15–60 秒，聽到滴答聲時大家一邊傳球一邊說出符合主題的東西，時間到炸彈爆炸、有音效，拿到球的人做一個動作。主題可以自己輸入，字要大，繁體中文。",
+    [("undercover","社區大智慧：誰是臥底","長輩互相猜，找出臥底"),
+     ("groupgamesquare","長者樂活運動大富翁","擲骰走格子，格子上做運動"),
+     ("guesscounty","猜猜我是誰・提示搶答","選縣市，一個提示一個提示猜"),
+     ("newyear","新年團圓問答戳戳樂","戳一格，答一題"),
+     ("lightgame","快速點燈遊戲","亮哪格就拍哪格"),
+     ("tonguetwister","繞口令抽籤","抽到誰，誰就念")],
+    note=("代間玩法","祖孫同一隊：傳炸彈時孩子說、長輩做動作；對對碰時孩子翻牌、長輩記位置。"),
+    easy=[("bombterrible","聯想傳炸彈","時間到就爆炸"),("memorygame","圖片記憶對對碰","兩張一樣就配對"),("findgame","圖片尋找對對碰","找出一樣的圖")]))
+
+S.append(typeslide("③", "var(--blue)", "教案設計③ 簡報影片", "簡報影片：一段影片、一個問題，看完就聊",
     ["<b>影片切段</b>：每段 1–3 分鐘，停格就提問", "<b>先找段落</b>：YouTube 提問／Gemini 讀影片，拿到時間碼", "<b>簡報遊戲變影片</b>：加配樂音效匯出 MP4，沒有老師也能播"],
     ["YouTube 提問", "Gemini 讀影片", "簡報遊戲影片工坊"],
     "提示詞・影片變停格提問教案", "這是一支（主題）影片：（貼網址）。請幫我切成 4–6 段，每段寫：時間碼、這段在講什麼、停格時問祖孫的 2 個問題（一題給孩子、一題給長輩），最後設計一個 5 分鐘的動手活動。只根據影片內容，看不到的寫「影片未提及」。",
@@ -437,9 +464,9 @@ S.append(typeslide("②", "var(--blue)", "教案設計② 簡報影片", "簡報
      ("god-eye-lessons","守護家人・上帝之眼","看一段影片、做一段作品"),
      ("kokedama-lessons","苔玉（水苔球）","園藝手作，影片段落帶領"),
      ("functional-training-lesson","站起來才算數","衛教動畫分 7 段＋互動問答"),
-     ("cholesterol-video-lesson","膽固醇影片互動課","9:16 影片分段＋行動卡")], note=("代間玩法","停格時先問孩子「你看到什麼」，再問長輩「你們以前也這樣嗎」，讓兩代對話。")))
+     ("cholesterol-video-lesson","膽固醇影片互動課","9:16 影片分段＋行動卡")], note=("代間玩法","停格時先問孩子「你看到什麼」，再問長輩「你們以前也這樣嗎」，讓兩代對話。"), easy=[('icopeexercise', '行動運動教學影片', '點一張卡，播一支影片'), ('reablementhome', '復能影音處方籤', '依部位找影片')]))
 
-S.append(typeslide("③", "var(--amber)", "教案設計③ 音樂互動", "音樂互動：老歌連結長輩、節奏帶動孩子",
+S.append(typeslide("④", "var(--amber)", "教案設計④ 音樂互動", "音樂互動：老歌連結長輩、節奏帶動孩子",
     ["<b>連結已知</b>：長輩年輕時的歌，一聽就打開話匣子", "<b>跟著拍子</b>：念字、拍手、踏步，節奏就是遊戲規則", "<b>祖孫對唱</b>：阿嬤唱老歌、孫子唱兒歌，互相猜歌名"],
     ["Gemini Canvas", "YouTube 律動影片", "ChatGPT 出題"],
     "提示詞・節奏遊戲網頁", "幫我做一個節奏遊戲網頁：畫面中央每拍出現一個圖片（蘋果、香蕉、西瓜、葡萄），跟著 90 BPM 的節拍器一起唸出名稱。可以調整速度（60–120 BPM）與每輪拍數，有開始／暫停大按鈕，可全螢幕投影。繁體中文，字要大。",
@@ -448,9 +475,9 @@ S.append(typeslide("③", "var(--amber)", "教案設計③ 音樂互動", "音�
      ("rhythmexercise","長輩律動產生器","設定 BPM，畫面出動作口令"),
      ("oldsongdance","音樂律動影片資料庫","378 支徒手律動，坐姿站姿"),
      ("song-lyrics-guess","看歌詞猜老歌","懷舊金曲 20 首"),
-     ("oldsongdata","長者回憶高峰金曲 200","依年代找長輩年輕時的歌")], note=("代間玩法","阿嬤唱一句老歌、孫子接一句兒歌；節奏遊戲請孩子當指揮。")))
+     ("oldsongdata","長者回憶高峰金曲 200","依年代找長輩年輕時的歌")], note=("代間玩法","阿嬤唱一句老歌、孫子接一句兒歌；節奏遊戲請孩子當指揮。"), easy=[('musicguess', '音樂猜猜看', '聽前奏猜金曲'), ('temponumber', '節奏挑戰', '跟拍子念數字'), ('runmath', '算數超慢跑節拍器', '踏步加算數')]))
 
-S.append(typeslide("④", "var(--sky)", "教案設計④ 動畫", "動畫教案：步驟一步一步動給你看",
+S.append(typeslide("⑤", "var(--sky)", "教案設計⑤ 動畫", "動畫教案：步驟一步一步動給你看",
     ["<b>手作步驟動畫</b>：剪紙、繞線、畫畫，比看照片好懂", "<b>反應動畫</b>：看到相反詞、指令就做動作", "<b>可調速度</b>：長輩慢一點、孩子快一點，同一個畫面"],
     ["Gemini Canvas", "OpenCode 做一整套", "ChatGPT 畫步驟圖"],
     "提示詞・步驟動畫網頁", "幫我做一個步驟動畫網頁：「對摺剪一顆愛心」，共 5 步（對摺、畫半邊、沿線剪、打開、裝飾）。每一步用 SVG 動畫畫出紙張和剪刀的動作，下方一行大字說明，有上一步／下一步／重播按鈕與速度調整。繁體中文。",
@@ -459,9 +486,9 @@ S.append(typeslide("④", "var(--sky)", "教案設計④ 動畫", "動畫教案�
      ("visual234","視力活動檢測動畫","張大眼睛一起玩"),
      ("paper-cut-workshop","對摺剪紙工坊","16 課剪紙步驟動畫＋A4 圖樣"),
      ("mandala-lessons","曼陀羅一圈一圈畫","24 課步驟動畫＋學習單"),
-     ("gods-eye-weaving","上帝之眼編織","3D 繞線動畫 24 步")], note=("代間玩法","孩子看動畫當小老師，一步一步教阿公阿嬤做；做完交換作品。")))
+     ("gods-eye-weaving","上帝之眼編織","3D 繞線動畫 24 步")], note=("代間玩法","孩子看動畫當小老師，一步一步教阿公阿嬤做；做完交換作品。"), easy=[('cognicise', '體智活動隨機生成器', '一按出一個動作'), ('picturecognicise', '體智動畫產生器', '放圖片變動畫'), ('cognicisealternate', '體智交替計時器', '動、停輪流計時')]))
 
-S.append(typeslide("⑤", "var(--lime)", "教案設計⑤ 紙本", "紙本教案：印出來就能玩，回家還能繼續",
+S.append(typeslide("⑥", "var(--lime)", "教案設計⑥ 紙本", "紙本教案：印出來就能玩，回家還能繼續",
     ["<b>產生器</b>：一鍵換題目，每桌拿到不一樣的", "<b>分級</b>：同一張學習單出簡單版、挑戰版", "<b>參考版面</b>：找喜歡的學習單截圖給 AI，做出同風格"],
     ["ChatGPT 做學習單", "Canva 魔法圖層", "Gemini 建立圖像"],
     "提示詞・祖孫學習單", "幫我做一張 A4 直式學習單「祖孫連連看：童玩今昔」：左邊 6 個古早童玩（陀螺、彈珠、跳房子、竹蜻蜓、尪仔標、扯鈴），右邊 6 個現在的玩具，請孩子和阿公阿嬤一起連出「玩法很像」的配對。下方留兩行「阿公阿嬤小時候怎麼玩？」給孩子記錄。字要大，繁體中文，線條清楚好列印。",
@@ -471,22 +498,22 @@ S.append(typeslide("⑤", "var(--lime)", "教案設計⑤ 紙本", "紙本教案
      ("new-bingo-generator","賓果生成器","骰子賓果、主題賓果卡"),
      ("tangle-steps","纏繞畫步驟示範","13 種圖樣一筆一筆畫"),
      ("fold-4x4-game","16 格數字摺紙","4×4 紙格摺出指定數字")],
-    note=("代間玩法","同一張學習單出祖孫兩個難度。接下來 4 頁：參考風格做學習單、Canva 改字、Gemini 免費做圖。")))
+    note=("代間玩法","同一張學習單出祖孫兩個難度。接下來 4 頁：參考風格做學習單、Canva 改字、Gemini 免費做圖。"), easy=[('countnumber', '眼花撩亂', '找一找、數一數，下載 PDF'), ('pen3x3', '3×3 運筆練習', '照著連線'), ('wrongword', '找錯字紙本', '圈出錯的字')]))
 
 S.append(keep("方法：參考別人的 UI 風格",
-    ("今天做圖、做網頁的共同方法", "教案設計⑤⑦　做圖、做網頁的共同方法")))
+    ("今天做圖、做網頁的共同方法", "教案設計⑥⑧　做圖、做網頁的共同方法")))
 S.append(keep("實作③ ChatGPT 參考風格做衛教圖",
-    ("實作③　做衛教圖：ChatGPT</div>\n  <h2>拿一張喜歡的衛教海報當參考，做出同風格的 ICOPE 海報</h2>", "教案設計⑤　紙本：ChatGPT 參考風格</div>\n  <h2>拿一張喜歡的海報當參考，做出同風格的學習單、海報</h2>"),
+    ("實作③　做衛教圖：ChatGPT</div>\n  <h2>拿一張喜歡的衛教海報當參考，做出同風格的 ICOPE 海報</h2>", "教案設計⑥　紙本：ChatGPT 參考風格</div>\n  <h2>拿一張喜歡的海報當參考，做出同風格的學習單、海報</h2>"),
     ('<b>檢查成品</b><p>版面跟參考海報一樣好讀，內容換成「篩檢→複評→轉介」。逐字看：錯字、數字、醫療說法。</p>', '<b>檢查成品</b><p>版面跟參考海報一樣好讀，內容換成自己的（示範主題：長者量六力）。逐字看：錯字、數字、說法。</p>'),
     ('''請參考這張海報的 UI 設計（右側直排大標題、粉彩粉橘配淡藍、手繪線條人物、彩色小標籤標題、左下圓角「溫馨提醒」框），只參考版面與配色，不要複製它的文字、QR code 和標誌。幫我做一張 A4 直式衛教海報：右側直排標題「長者量六力 從篩檢到轉介」，副標「家屬指南」。三個標籤段落：篩檢：65 歲以上每年量一次六力；複評：有一項異常，由醫事人員再仔細評估；轉介：依結果連結復能、營養、眼科或耳鼻喉科。溫馨提醒：按時篩檢，及早發現、及早介入。繁體中文、字要大、不要錯字。''',
      '''請參考這張海報的 UI 設計（右側直排大標題、粉彩粉橘配淡藍、手繪線條人物、彩色小標籤標題、左下圓角「溫馨提醒」框），只參考版面與配色，不要複製它的文字、QR code 和標誌。幫我做一張 A4 直式活動海報：右側直排標題「祖孫遊戲日」，副標「一副牌玩一下午」。三個標籤段落：配對：找出一樣的牌；組合：兩張湊成 10；排序：從小排到大。溫馨提醒：輸贏不重要，一起笑最重要。繁體中文、字要大、不要錯字。''')))
 S.append(keep("實作③ Canva 魔法圖層改字改圖",
-    ("實作③　Canva 魔法圖層</div>", "教案設計⑤　Canva 魔法圖層</div>")))
+    ("實作③　Canva 魔法圖層</div>", "教案設計⑥　Canva 魔法圖層</div>")))
 S.append(keep("實作③ 免費版：Gemini 建立圖像",
-    ("實作③　免費替代：Gemini</div>", "教案設計⑤　免費替代：Gemini</div>"),
+    ("實作③　免費替代：Gemini</div>", "教案設計⑥　免費替代：Gemini</div>"),
     ('<b>先備好正確內容</b><p>到國健署「健康九九＋」衛教資源搜尋 ICOPE 聽力篇，挑出 6 個重點。AI 負責畫，內容由你決定。</p>', '<b>先備好正確內容</b><p>衛教圖先到國健署「健康九九＋」找正確資料，挑出 6 個重點（示範：聽力保健）。AI 負責畫，內容由你決定。</p>')))
 
-S.append(typeslide("⑥", "var(--green)", "教案設計⑥ 桌遊卡牌", "桌遊卡牌：自己的主題，做成一副牌",
+S.append(typeslide("⑦", "var(--green)", "教案設計⑦ 桌遊卡牌", "桌遊卡牌：自己的主題，做成一副牌",
     ["<b>一套牌、多種玩法</b>：配對、記憶翻牌、湊數、搶答都用同一副", "<b>正反面</b>：正面圖、背面字，孩子看圖、長輩讀字", "<b>真實尺寸列印</b>：A4 每頁 4／6 張，有牌背、裁切線"],
     ["ChatGPT 畫卡圖", "Gemini Canvas 做產生器", "OpenCode 批次產生"],
     "提示詞・桌遊卡牌產生器", "幫我做一個卡牌產生器網頁：主題「台灣水果」，20 張卡，正面是水果圖、背面是名稱與一句冷知識。可以選 A4 每頁 4 張或 6 張，有裁切線、統一的牌背，按鈕下載 PDF。下方附 3 種玩法說明（配對、記憶翻牌、誰先湊到 3 種顏色）。繁體中文。",
@@ -495,9 +522,9 @@ S.append(typeslide("⑥", "var(--green)", "教案設計⑥ 桌遊卡牌", "桌�
      ("poker-icebreakers","撲克牌破冰 7 種玩法","動畫示範＋現場抽籤器"),
      ("colored-paper-board-game","雙色摺色塊","依題目摺出指定色塊"),
      ("boardgame1-13","1–13 邏輯解碼大師","列印桌遊版產生器"),
-     ("cardssame","圖卡配對拉霸機","上傳自己的圖卡做配對")], note=("代間玩法","孩子負責洗牌、發牌，長輩負責讀卡上的字；記憶翻牌時祖孫同一隊。")))
+     ("cardssame","圖卡配對拉霸機","上傳自己的圖卡做配對")], note=("代間玩法","孩子負責洗牌、發牌，長輩負責讀卡上的字；記憶翻牌時祖孫同一隊。"), easy=[('dominogenerator', '骨牌產生器', '點數、數字、圖案骨牌'), ('colorcards', '四色卡牌', '四色數字牌＋玩法')]))
 
-S.append(typeslide("⑦", "var(--mag)", "教案設計⑦ 主題式衛教", "主題式衛教：多互動問答的網頁型簡報",
+S.append(typeslide("⑧", "var(--mag)", "教案設計⑧ 主題式衛教", "主題式衛教：多互動問答的網頁型簡報",
     ["<b>每 3 頁一個互動</b>：猜猜看、選選看、動一動，不讓人只是聽", "<b>一個主題講透</b>：護眼、血壓、手指操、情緒", "<b>手機也能看</b>：投影上課，課後掃 QR 自己複習"],
     ["Gemini Canvas", "參考設計做網頁簡報", "GitHub Pages 上架"],
     "提示詞・互動衛教簡報", "參考這兩張網站截圖的設計風格，幫我做一份 12 頁的互動網頁型簡報「保護眼睛，祖孫一起來」：每 3 頁穿插一個互動（二選一搶答、找不同、跟著做眼睛運動 30 秒倒數），左右鍵換頁，上方頁碼與進度條，最後一頁是回家任務卡。字要大，繁體中文，不要用截圖裡的人和商標。",
@@ -506,14 +533,14 @@ S.append(typeslide("⑦", "var(--mag)", "教案設計⑦ 主題式衛教", "主�
      ("finger-brain-taigi","健腦手指協調操","手指動畫＋跟著做"),
      ("emotion-bear-class","熊熊心情教室","3 歲幼兒情緒辨識互動課"),
      ("essential-oil-special-kids","特殊兒精油放鬆與調節","證據等級標籤＋教案連結"),
-     ("eye-health-for-seniors","眼睛顧好不吃虧","長者視力保健互動簡報")], note=("代間玩法","每個互動設計成「孩子答一題、長輩分享一段」；課後掃 QR 回家再玩一次。")))
+     ("eye-health-for-seniors","眼睛顧好不吃虧","長者視力保健互動簡報")], note=("代間玩法","每個互動設計成「孩子答一題、長輩分享一段」；課後掃 QR 回家再玩一次。"), easy=[('45645645', '我的餐盤小測驗', '幾題問答就完成'), ('dementia16square', '腦海中的橡皮擦', '16 格翻開答題'), ('sick', '感冒保健大挑戰', '一題一題答')]))
 
 S.append(keep("實作④ 參考設計做網頁型簡報",
-    ('實作④　做網頁型簡報</div>', '教案設計⑦　實作：參考設計做網頁型簡報</div>'),
+    ('實作④　做網頁型簡報</div>', '教案設計⑧　實作：參考設計做網頁型簡報</div>'),
     ("再用實作⑦放上 GitHub Pages。今天這份簡報就是這樣做出來的。", "再放上 GitHub Pages（後面會教）。今天這份簡報就是這樣做出來的。"),
     ('幫我做一份 6 頁的網頁型簡報：「ICOPE 長者量六力」，給社區醫護人員看。用左右鍵換頁、上方有頁碼和進度條，第 1 頁封面、第 2 頁用數字統計列、後面六力各一張卡片。', '幫我做一份 8 頁的網頁型簡報：「祖孫一起動一動」，給社區祖孫活動用。用左右鍵換頁、上方有頁碼和進度條，第 1 頁封面、第 2 頁用數字統計列、後面每頁一個祖孫小遊戲卡片，每張卡有「搶答」按鈕。')))
 
-S.append(typeslide("⑧", "var(--blue)", "教案設計⑧ 看圖猜謎", "看圖猜謎：一張圖，打開祖孫的話匣子",
+S.append(typeslide("⑨", "var(--blue)", "教案設計⑨ 看圖猜謎", "看圖猜謎：一張圖，打開祖孫的話匣子",
     ["<b>從熟悉的開始</b>：動物、植物、水果、老藝人、景點", "<b>提示一步一步給</b>：先看局部、再看全圖，孩子和長輩都猜得到", "<b>猜完再聊</b>：每題附一句提問「你在哪裡看過？」"],
     ["ChatGPT 生圖", "Antigravity 生圖", "Canva 素材"],
     "提示詞・看圖猜謎網頁", "幫我做一個「看圖猜台灣鳥類」網頁，給祖孫一起玩：8 題，每題先顯示模糊的圖，按「提示」逐步變清楚，三選一大按鈕，答對放煙火並顯示一句「阿公阿嬤，你在哪裡看過牠？」。圖片我會放在 images 資料夾（bird1.jpg～bird8.jpg）。繁體中文，字要大。",
@@ -522,11 +549,11 @@ S.append(typeslide("⑧", "var(--blue)", "教案設計⑧ 看圖猜謎", "看圖
      ("animal-guessing","動物猜猜看","看圖猜動物互動教室"),
      ("flowers-guess","花花世界","猜花、三選一、可列印圖卡"),
      ("oldstar-geuss-game","老藝人懷舊猜猜看","30 位老藝人，團體一起猜"),
-     ("landguess","台灣景點猜謎","看景點猜地名，帶長輩環島")], note=("代間玩法","孩子念題目、長輩說故事：猜到鳥，就請阿公分享小時候在哪裡看過。更多：看照片猜藝人、老藝人賓果、動物足跡。")))
+     ("landguess","台灣景點猜謎","看景點猜地名，帶長輩環島")], note=("代間玩法","孩子念題目、長輩說故事：猜到鳥，就請阿公分享小時候在哪裡看過。更多：看照片猜藝人、老藝人賓果、動物足跡。"), easy=[('picturesquare', '見微知全', '翻格子猜圖片'), ('oldpicture', '猜猜我是誰', '看照片猜人')]))
 
 S.append('''<!-- 生圖 -->
-<section class="slide" data-title="教案設計⑧ 圖片從哪裡來：生圖比較">
-  <div class="eyebrow" style="--c:var(--blue)"><span class="sq"></span>教案設計⑧　圖片從哪裡來</div>
+<section class="slide" data-title="教案設計⑨ 圖片從哪裡來：生圖比較">
+  <div class="eyebrow" style="--c:var(--blue)"><span class="sq"></span>教案設計⑨　圖片從哪裡來</div>
   <h2>看圖猜謎要圖：哪個 AI 能把生好的圖放進網頁？</h2>
   <div class="cols" style="--n:2;grid-template-columns:minmax(0,6fr) minmax(0,5fr)">
     <figure class="shot" style="margin:0;height:100%"><div class="frame" style="background:var(--soft)"><img src="img/gm_bird_canvas.jpg" alt="Gemini Canvas 看圖猜鳥實測：台灣藍鵲變成簡單的向量圖"></div><figcaption><span>11/15 實測 Gemini Canvas：要它「自己生成鳥的圖片」，網頁呼叫生圖失敗，改畫成簡單的向量圖</span></figcaption></figure>
@@ -707,13 +734,14 @@ S.append(end)
 
 # 七種總覽（連結到各 type 頁）
 T7 = [("①","var(--mag)","簡報遊戲","投影搶答、看到就動","教案設計① 簡報遊戲"),
-      ("②","var(--blue)","簡報影片","影片切段、停格提問","教案設計② 簡報影片"),
-      ("③","var(--amber)","音樂互動","老歌、節奏、律動","教案設計③ 音樂互動"),
-      ("④","var(--sky)","動畫","步驟動畫、反應動畫","教案設計④ 動畫"),
-      ("⑤","var(--lime)","紙本","學習單、產生器、分級","教案設計⑤ 紙本"),
-      ("⑥","var(--green)","桌遊卡牌","自己的主題做一副牌","教案設計⑥ 桌遊卡牌"),
-      ("⑦","var(--mag)","主題式衛教","多互動問答的網頁簡報","教案設計⑦ 主題式衛教"),
-      ("⑧","var(--blue)","看圖猜謎","動物、植物、藝人、景點","教案設計⑧ 看圖猜謎")]
+      ("②","var(--amber)","遊戲團康","傳炸彈、對對碰、輪流","教案設計② 遊戲團康"),
+      ("③","var(--blue)","簡報影片","影片切段、停格提問","教案設計③ 簡報影片"),
+      ("④","var(--amber)","音樂互動","老歌、節奏、律動","教案設計④ 音樂互動"),
+      ("⑤","var(--sky)","動畫","步驟動畫、反應動畫","教案設計⑤ 動畫"),
+      ("⑥","var(--lime)","紙本","學習單、產生器、分級","教案設計⑥ 紙本"),
+      ("⑦","var(--green)","桌遊卡牌","自己的主題做一副牌","教案設計⑦ 桌遊卡牌"),
+      ("⑧","var(--mag)","主題式衛教","多互動問答的網頁簡報","教案設計⑧ 主題式衛教"),
+      ("⑨","var(--blue)","看圖猜謎","動物、植物、藝人、景點","教案設計⑨ 看圖猜謎")]
 def idx(title):
     for i, s in enumerate(S):
         if f'data-title="{esc(title)}"' in s or f'data-title="{title}"' in s: return i + 1
@@ -722,10 +750,10 @@ def idx(title):
 def build_types7():
     tiles = "".join(f'<a class="t7" href="#s{{{t[4]}}}" style="--c:{t[1]}"><i>{t[0]}</i><b>{t[2]}</b><small>{t[3]}</small><span class="tag">看範例 →</span></a>' for t in T7)
     return f'''<!-- 七種教案 -->
-<section class="slide" data-title="八種教案設計總覽">
+<section class="slide" data-title="九種教案設計總覽">
   <div class="eyebrow" style="--c:var(--ink)"><span class="sq"></span>教案設計</div>
-  <h2>八種教案：先看範例，再教你怎麼用 AI 做</h2>
-  <p class="lede">每一種都附 6 個範例（點卡片或掃 QR 打開）、設計重點，和一段可以直接複製的提示詞。</p>
+  <h2>九種教案：先看範例，再教你怎麼用 AI 做</h2>
+  <p class="lede">每一種都有「最簡單先上手」的入門範例＋6 個進階範例（點卡片或掃 QR 打開）、設計重點，和一段可以直接複製的提示詞。</p>
   <div class="types7">{tiles}</div>
 </section>
 '''
@@ -734,12 +762,12 @@ AG = [("var(--mag)",None,"開場：先玩再學","猜歌、好味島、馬賽克
       ("var(--blue)",None,"實作①　語音輸入","Typeless（建議裝桌機）、麥克風技巧、繁體設定","實作① 語音輸入","15′"),
       ("var(--blue)",None,"實作②　Chrome 的應用","問問 Gemini 讀資料、YouTube 讀影片","實作② Chrome 問問 Gemini","15′"),
       ("var(--green)",None,"遊戲化教學原則","發展階梯、四大機制、1–16 數字牌、撲克牌","遊戲化原則：從發展看幼老","20′"),
-      ("var(--mag)",None,"教案①②　簡報遊戲、簡報影片","Gemini Canvas 實作、影片切段提問","八種教案設計總覽","20′"),
-      ("var(--amber)","dk","教案③④　音樂互動、動畫","節奏遊戲、步驟動畫","教案設計③ 音樂互動","15′"),
-      ("var(--lime)","dk","教案⑤⑥　紙本、桌遊卡牌","ChatGPT 參考風格、Canva 魔法圖層","教案設計⑤ 紙本","15′"),
-      ("var(--mag)",None,"教案⑦⑧　互動衛教、看圖猜謎","參考設計、誰能生圖放進網頁","教案設計⑦ 主題式衛教","15′"),
+      ("var(--mag)",None,"教案①②　簡報遊戲、遊戲團康","Gemini Canvas 實作、傳炸彈、對對碰","九種教案設計總覽","20′"),
+      ("var(--blue)",None,"教案③④　簡報影片、音樂互動","影片切段提問、節奏遊戲","教案設計③ 簡報影片","15′"),
+      ("var(--lime)","dk","教案⑤⑥　動畫、紙本","步驟動畫、ChatGPT 參考風格、Canva 魔法圖層","教案設計⑤ 動畫","15′"),
+      ("var(--green)",None,"教案⑦⑧⑨　桌遊卡牌、互動衛教、看圖猜謎","一副牌、參考設計、誰能生圖放進網頁","教案設計⑦ 桌遊卡牌","20′"),
       ("var(--mag)",None,"做 PPT","Gemini 任務、ChatGPT 工作、NotebookLM、Canva","實作⑤ Gemini 做 PPT：要用「任務」","10′"),
-      ("var(--ink)",None,"上架＋AI 代理人","GitHub Pages、OpenCode、Antigravity、模型怎麼選","實作⑦ 上架 GitHub Pages","30′"),
+      ("var(--ink)",None,"上架＋AI 代理人","GitHub Pages、OpenCode、Antigravity、模型怎麼選","實作⑦ 上架 GitHub Pages","25′"),
       ("var(--sky)",None,"教案資料庫＋提示詞庫","帶回去直接用","更多教案資料庫","5′")]
 
 def build_agenda():
@@ -751,7 +779,7 @@ def build_agenda():
     return f'''<!-- 地圖 -->
 <section class="slide" data-title="今天的地圖">
   <div class="eyebrow" style="--c:var(--amber)"><span class="sq"></span>今天的地圖　09:00–12:00</div>
-  <h2>三小時：先學會玩，再用 AI 做出八種教案</h2>
+  <h2>三小時：先學會玩，再用 AI 做出九種教案</h2>
   <nav class="agenda" aria-label="課程地圖">{"".join(rows)}</nav>
 </section>
 '''
@@ -760,7 +788,7 @@ S[S.index("@@AGENDA@@")] = build_agenda()
 S[S.index("@@TYPES7@@")] = build_types7()
 body = "".join(S)
 body = re.sub(r'#s\{([^}]+)\}', lambda m: f'#s{idx(m.group(1))}', body)
-RETITLE = {"實作④ 做互動網頁":"教案① 實作：Gemini Canvas 搶答網頁","實作③ ChatGPT 參考風格做衛教圖":"教案⑤ ChatGPT 參考風格做學習單","實作③ Canva 魔法圖層改字改圖":"教案⑤ Canva 魔法圖層改字改圖","實作③ 免費版：Gemini 建立圖像":"教案⑤ 免費版：Gemini 建立圖像","實作④ 參考設計做網頁型簡報":"教案⑦ 參考設計做網頁型簡報","實作⑤ Gemini 做 PPT：要用「任務」":"做 PPT：Gemini 要用「任務」","實作⑤ ChatGPT 工作模式：自己生圖放進簡報":"做 PPT：ChatGPT 工作模式","實作⑤ NotebookLM 做簡報":"做 PPT：NotebookLM","實作⑤ ChatGPT＋Canva 外掛：記得檢查圖層":"做 PPT：ChatGPT＋Canva 外掛","實作⑦ 上架 GitHub Pages":"上架 GitHub Pages","實作⑧ OpenCode：選資料夾、選模型":"OpenCode：選資料夾、選模型","實作⑧ OpenCode 代理人做 Google 表單":"OpenCode 代理人做 Google 表單","實作⑧ OpenCode 代理人整理資料夾":"OpenCode 代理人整理資料夾","實作⑧ OpenCode 代理人蒐集資料":"OpenCode 代理人蒐集資料"}
+RETITLE = {"實作④ 做互動網頁":"教案① 實作：Gemini Canvas 搶答網頁","實作③ ChatGPT 參考風格做衛教圖":"教案⑥ ChatGPT 參考風格做學習單","實作③ Canva 魔法圖層改字改圖":"教案⑥ Canva 魔法圖層改字改圖","實作③ 免費版：Gemini 建立圖像":"教案⑥ 免費版：Gemini 建立圖像","實作④ 參考設計做網頁型簡報":"教案⑧ 參考設計做網頁型簡報","實作⑤ Gemini 做 PPT：要用「任務」":"做 PPT：Gemini 要用「任務」","實作⑤ ChatGPT 工作模式：自己生圖放進簡報":"做 PPT：ChatGPT 工作模式","實作⑤ NotebookLM 做簡報":"做 PPT：NotebookLM","實作⑤ ChatGPT＋Canva 外掛：記得檢查圖層":"做 PPT：ChatGPT＋Canva 外掛","實作⑦ 上架 GitHub Pages":"上架 GitHub Pages","實作⑧ OpenCode：選資料夾、選模型":"OpenCode：選資料夾、選模型","實作⑧ OpenCode 代理人做 Google 表單":"OpenCode 代理人做 Google 表單","實作⑧ OpenCode 代理人整理資料夾":"OpenCode 代理人整理資料夾","實作⑧ OpenCode 代理人蒐集資料":"OpenCode 代理人蒐集資料"}
 for a, b in RETITLE.items():
     assert f'data-title="{a}"' in body, a
     body = body.replace(f'data-title="{a}"', f'data-title="{b}"')
