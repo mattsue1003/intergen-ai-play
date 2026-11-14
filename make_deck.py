@@ -218,7 +218,7 @@ S.append(f'''<!-- 教室螢幕 -->
 
 S.append(f'''<!-- 一題多玩 -->
 <section class="slide" data-title="先體驗：一題多玩">
-  <div class="eyebrow" style="--c:var(--c1,#E4572E)"><span class="sq"></span>先體驗　打一次題目，換 24 種玩法</div>
+  <div class="eyebrow" style="--c:var(--c1,#E4572E)"><span class="sq"></span>先體驗　打一次題目，換 27 種玩法</div>
   <h2>一題多玩：同一份題目，快問快答、翻牌、大富翁、賓果都能玩</h2>
   <div class="cols" style="--n:2;grid-template-columns:minmax(0,7fr) minmax(0,4fr)">
     <a class="work" href="{GH}one-set-many-games/" target="_blank" rel="noopener" style="height:100%"><div class="ph" style="flex:1"><img src="img/ex/one-set-many-games.jpg" alt="一題多玩 首頁：題組與 24 種玩法" loading="lazy"></div><div class="t">mattsue1003.github.io/one-set-many-games</div></a>
@@ -226,7 +226,7 @@ S.append(f'''<!-- 一題多玩 -->
       <a class="fbcard" href="{GH}one-set-many-games/" target="_blank" rel="noopener" style="padding:14px"><img src="img/qr/one-set-many-games.svg" alt="一題多玩 QR code" style="max-width:150px"><b style="font-size:18px">掃描一起玩</b><span class="fbbtn" style="background:#E4572E">開啟一題多玩 ↗</span></a>
       <ul class="keys" style="--c:#E4572E">
         <li><i>1</i><span><b>選題組</b>：台灣水果、童玩今昔、1–16 湊 10…或打自己的題目</span></li>
-        <li><i>2</i><span><b>挑玩法</b>：14 種經典＋10 種加碼（大富翁、井字棋、傳炸彈）</span></li>
+        <li><i>2</i><span><b>挑玩法</b>：27 種：搶答、配對、反應、大富翁、選邊站、少了誰</span></li>
         <li><i>3</i><span><b>投影玩</b>：分隊計分、倒數、字可調到「特大」</span></li>
       </ul>
       <div class="note" style="--c:#E4572E"><b>出題</b><span>請 ChatGPT 依「題目｜答案｜錯誤選項｜分類」出 10 題，整段貼上就好。</span></div>
@@ -679,7 +679,7 @@ S.append(f'''<!-- 更多教案 -->
     ("eye-games-for-seniors","護眼同樂會","8 種團體視力遊戲，投影帶領"),
     ("classroom-screen","教室螢幕","計時、分組、抽籤 33 個小工具"),
     ("intergen-game-db","幼老代間遊戲資料庫","37 個祖孫遊戲教案＋示範影片"),
-    ("one-set-many-games","一題多玩","同一份題目，24 種遊戲模板"),
+    ("one-set-many-games","一題多玩","同一份題目，27 種遊戲模板"),
     ("japan-dayservice-activity-videos","日本日照團康影片資料庫","350 支團康與體操，中文整理"),
     ("finger-database","手指操影片資料庫","50 支帶著做的示範影片"),
     ("temponumber","節奏挑戰・數字版","跟著拍子念數字，團體版"),

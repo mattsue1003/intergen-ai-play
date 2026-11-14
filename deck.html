@@ -97,6 +97,7 @@ p{margin:0}
 .intro-cols h3{font-size:15px;color:var(--muted);letter-spacing:.08em;margin-bottom:8px}
 .bio{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:5px;font-size:15.5px;line-height:1.45}
 .bio li{padding-left:16px;position:relative}.bio li::before{content:"";position:absolute;left:0;top:.55em;width:7px;height:7px;border-radius:2px;background:var(--blue)}
+.introqrs{display:flex;flex-direction:column;gap:12px;min-width:0}.introqrs .fbcard{padding:12px 10px;gap:6px}.introqrs .fbcard img{max-width:118px}.introqrs .fbcard b{font-size:16px}.introqrs .fbcard .fbbtn{font-size:13px;padding:6px 12px}.introqrs .fbcard.site{border:2px solid var(--ink)}
 .intro-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
 .fbcard{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;padding:22px 18px;border:1px solid var(--line);border-radius:14px;background:var(--paper);box-shadow:0 6px 20px rgba(60,50,30,.10);text-decoration:none;color:var(--ink)}
 .fbcard img{width:100%;max-width:200px;aspect-ratio:1;background:#fff}
@@ -238,7 +239,7 @@ td.num{font-family:var(--f-display);font-weight:800;font-variant-numeric:tabular
   .cover .confetti{display:none}
   .slide>.cols{max-height:none}.slide>.cols>div,.slide>.cols>ul{justify-content:flex-start}.slide>.cols>div>.note,.slide>.cols>.check>li{flex:none}
   .ai3{grid-template-columns:minmax(0,1fr);max-height:none}
-  .intro{grid-template-columns:minmax(0,1fr);max-height:none}.intro-cols{grid-template-columns:minmax(0,1fr)}.intro-photo{max-width:320px}.intro-bio h2{font-size:26px}.fbcard{max-width:320px}
+  .intro{grid-template-columns:minmax(0,1fr);max-height:none}.intro-cols{grid-template-columns:minmax(0,1fr)}.intro-photo{max-width:320px}.introqrs{flex-direction:row;flex-wrap:wrap}.introqrs .fbcard{flex:1 1 140px}.intro-bio h2{font-size:26px}.fbcard{max-width:320px}
   .cover h1{font-size:36px}
   body.scroll .steps{overflow:visible}
   body.scroll .steps li{cursor:default;border-color:var(--line);background:var(--paper)}
@@ -391,12 +392,18 @@ td.num{font-family:var(--f-display);font-weight:800;font-variant-numeric:tabular
         </div>
       </div>
     </div>
-    <a class="fbcard" href="https://www.facebook.com/profile.php?id=100063748491881" target="_blank" rel="noopener">
-      <img src="img/qr-fb.svg" alt="鍾孟修Matt-職能治療師 粉絲專頁 QR code">
-      <b>加入粉絲專頁<br>看更多作品</b>
-      <span>鍾孟修Matt-職能治療師</span>
-      <span class="fbbtn">前往粉絲專頁 ↗</span>
-    </a>
+    <div class="introqrs">
+      <a class="fbcard site" href="https://mattsue1003.github.io/matt-intro/" target="_blank" rel="noopener">
+        <img src="img/qr-intro.svg" alt="鍾孟修 自我介紹網站 QR code">
+        <b>認識我<br>自我介紹網站</b>
+        <span class="fbbtn" style="background:var(--ink)">開啟網站 ↗</span>
+      </a>
+      <a class="fbcard" href="https://www.facebook.com/profile.php?id=100063748491881" target="_blank" rel="noopener">
+        <img src="img/qr-fb.svg" alt="鍾孟修Matt-職能治療師 粉絲專頁 QR code">
+        <b>加入粉絲專頁<br>看更多作品</b>
+        <span class="fbbtn">前往粉絲專頁 ↗</span>
+      </a>
+    </div>
   </div>
 </section>
 <!-- 地圖 -->
@@ -447,7 +454,7 @@ td.num{font-family:var(--f-display);font-weight:800;font-variant-numeric:tabular
 </section>
 <!-- 一題多玩 -->
 <section class="slide" data-title="先體驗：一題多玩">
-  <div class="eyebrow" style="--c:var(--c1,#E4572E)"><span class="sq"></span>先體驗　打一次題目，換 24 種玩法</div>
+  <div class="eyebrow" style="--c:var(--c1,#E4572E)"><span class="sq"></span>先體驗　打一次題目，換 27 種玩法</div>
   <h2>一題多玩：同一份題目，快問快答、翻牌、大富翁、賓果都能玩</h2>
   <div class="cols" style="--n:2;grid-template-columns:minmax(0,7fr) minmax(0,4fr)">
     <a class="work" href="https://mattsue1003.github.io/one-set-many-games/" target="_blank" rel="noopener" style="height:100%"><div class="ph" style="flex:1"><img src="img/ex/one-set-many-games.jpg" alt="一題多玩 首頁：題組與 24 種玩法" loading="lazy"></div><div class="t">mattsue1003.github.io/one-set-many-games</div></a>
@@ -455,7 +462,7 @@ td.num{font-family:var(--f-display);font-weight:800;font-variant-numeric:tabular
       <a class="fbcard" href="https://mattsue1003.github.io/one-set-many-games/" target="_blank" rel="noopener" style="padding:14px"><img src="img/qr/one-set-many-games.svg" alt="一題多玩 QR code" style="max-width:150px"><b style="font-size:18px">掃描一起玩</b><span class="fbbtn" style="background:#E4572E">開啟一題多玩 ↗</span></a>
       <ul class="keys" style="--c:#E4572E">
         <li><i>1</i><span><b>選題組</b>：台灣水果、童玩今昔、1–16 湊 10…或打自己的題目</span></li>
-        <li><i>2</i><span><b>挑玩法</b>：14 種經典＋10 種加碼（大富翁、井字棋、傳炸彈）</span></li>
+        <li><i>2</i><span><b>挑玩法</b>：27 種：搶答、配對、反應、大富翁、選邊站、少了誰</span></li>
         <li><i>3</i><span><b>投影玩</b>：分隊計分、倒數、字可調到「特大」</span></li>
       </ul>
       <div class="note" style="--c:#E4572E"><b>出題</b><span>請 ChatGPT 依「題目｜答案｜錯誤選項｜分類」出 10 題，整段貼上就好。</span></div>
@@ -1145,7 +1152,7 @@ td.num{font-family:var(--f-display);font-weight:800;font-variant-numeric:tabular
 <section class="slide" data-title="更多教案資料庫">
   <div class="eyebrow" style="--c:var(--sky)"><span class="sq"></span>帶回去用</div>
   <h2>更多教案資料庫：找點子、找影片、找玩法</h2>
-  <div class="exgrid" style="--m:5"><a class="ex" href="https://mattsue1003.github.io/gamelearn/" target="_blank" rel="noopener"><div class="ph"><img src="img/ex/gamelearn.jpg" alt="互動式與遊戲化教學法知識圖卡 畫面" loading="lazy"></div><div class="row"><span><b>互動式與遊戲化教學法知識圖卡</b><small>問答、案例、電影、桌遊、實作、反思</small></span><img class="q" src="img/qr/gamelearn.svg" alt="互動式與遊戲化教學法知識圖卡 QR code"></div></a><a class="ex" href="https://mattsue1003.github.io/home-play-library/" target="_blank" rel="noopener"><div class="ph"><img src="img/ex/home-play-library.jpg" alt="在家動一動 活動庫 畫面" loading="lazy"></div><div class="row"><span><b>在家動一動 活動庫</b><small>運動、認知、體智能 78 個活動</small></span><img class="q" src="img/qr/home-play-library.svg" alt="在家動一動 活動庫 QR code"></div></a><a class="ex" href="https://mattsue1003.github.io/sensory-play-lessons/" target="_blank" rel="noopener"><div class="ph"><img src="img/ex/sensory-play-lessons.jpg" alt="感覺遊戲教案庫 畫面" loading="lazy"></div><div class="row"><span><b>感覺遊戲教案庫</b><small>100 個感覺遊戲，幼兒長輩都適用</small></span><img class="q" src="img/qr/sensory-play-lessons.svg" alt="感覺遊戲教案庫 QR code"></div></a><a class="ex" href="https://mattsue1003.github.io/eye-games-for-seniors/" target="_blank" rel="noopener"><div class="ph"><img src="img/ex/eye-games-for-seniors.jpg" alt="護眼同樂會 畫面" loading="lazy"></div><div class="row"><span><b>護眼同樂會</b><small>8 種團體視力遊戲，投影帶領</small></span><img class="q" src="img/qr/eye-games-for-seniors.svg" alt="護眼同樂會 QR code"></div></a><a class="ex" href="https://mattsue1003.github.io/classroom-screen/" target="_blank" rel="noopener"><div class="ph"><img src="img/ex/classroom-screen.jpg" alt="教室螢幕 畫面" loading="lazy"></div><div class="row"><span><b>教室螢幕</b><small>計時、分組、抽籤 33 個小工具</small></span><img class="q" src="img/qr/classroom-screen.svg" alt="教室螢幕 QR code"></div></a><a class="ex" href="https://mattsue1003.github.io/intergen-game-db/" target="_blank" rel="noopener"><div class="ph"><img src="img/ex/intergen-game-db.jpg" alt="幼老代間遊戲資料庫 畫面" loading="lazy"></div><div class="row"><span><b>幼老代間遊戲資料庫</b><small>37 個祖孫遊戲教案＋示範影片</small></span><img class="q" src="img/qr/intergen-game-db.svg" alt="幼老代間遊戲資料庫 QR code"></div></a><a class="ex" href="https://mattsue1003.github.io/one-set-many-games/" target="_blank" rel="noopener"><div class="ph"><img src="img/ex/one-set-many-games.jpg" alt="一題多玩 畫面" loading="lazy"></div><div class="row"><span><b>一題多玩</b><small>同一份題目，24 種遊戲模板</small></span><img class="q" src="img/qr/one-set-many-games.svg" alt="一題多玩 QR code"></div></a><a class="ex" href="https://mattsue1003.github.io/japan-dayservice-activity-videos/" target="_blank" rel="noopener"><div class="ph"><img src="img/ex/japan-dayservice-activity-videos.jpg" alt="日本日照團康影片資料庫 畫面" loading="lazy"></div><div class="row"><span><b>日本日照團康影片資料庫</b><small>350 支團康與體操，中文整理</small></span><img class="q" src="img/qr/japan-dayservice-activity-videos.svg" alt="日本日照團康影片資料庫 QR code"></div></a><a class="ex" href="https://mattsue1003.github.io/finger-database/" target="_blank" rel="noopener"><div class="ph"><img src="img/ex/finger-database.jpg" alt="手指操影片資料庫 畫面" loading="lazy"></div><div class="row"><span><b>手指操影片資料庫</b><small>50 支帶著做的示範影片</small></span><img class="q" src="img/qr/finger-database.svg" alt="手指操影片資料庫 QR code"></div></a><a class="ex" href="https://mattsue1003.github.io/temponumber/" target="_blank" rel="noopener"><div class="ph"><img src="img/ex/temponumber.jpg" alt="節奏挑戰・數字版 畫面" loading="lazy"></div><div class="row"><span><b>節奏挑戰・數字版</b><small>跟著拍子念數字，團體版</small></span><img class="q" src="img/qr/temponumber.svg" alt="節奏挑戰・數字版 QR code"></div></a></div>
+  <div class="exgrid" style="--m:5"><a class="ex" href="https://mattsue1003.github.io/gamelearn/" target="_blank" rel="noopener"><div class="ph"><img src="img/ex/gamelearn.jpg" alt="互動式與遊戲化教學法知識圖卡 畫面" loading="lazy"></div><div class="row"><span><b>互動式與遊戲化教學法知識圖卡</b><small>問答、案例、電影、桌遊、實作、反思</small></span><img class="q" src="img/qr/gamelearn.svg" alt="互動式與遊戲化教學法知識圖卡 QR code"></div></a><a class="ex" href="https://mattsue1003.github.io/home-play-library/" target="_blank" rel="noopener"><div class="ph"><img src="img/ex/home-play-library.jpg" alt="在家動一動 活動庫 畫面" loading="lazy"></div><div class="row"><span><b>在家動一動 活動庫</b><small>運動、認知、體智能 78 個活動</small></span><img class="q" src="img/qr/home-play-library.svg" alt="在家動一動 活動庫 QR code"></div></a><a class="ex" href="https://mattsue1003.github.io/sensory-play-lessons/" target="_blank" rel="noopener"><div class="ph"><img src="img/ex/sensory-play-lessons.jpg" alt="感覺遊戲教案庫 畫面" loading="lazy"></div><div class="row"><span><b>感覺遊戲教案庫</b><small>100 個感覺遊戲，幼兒長輩都適用</small></span><img class="q" src="img/qr/sensory-play-lessons.svg" alt="感覺遊戲教案庫 QR code"></div></a><a class="ex" href="https://mattsue1003.github.io/eye-games-for-seniors/" target="_blank" rel="noopener"><div class="ph"><img src="img/ex/eye-games-for-seniors.jpg" alt="護眼同樂會 畫面" loading="lazy"></div><div class="row"><span><b>護眼同樂會</b><small>8 種團體視力遊戲，投影帶領</small></span><img class="q" src="img/qr/eye-games-for-seniors.svg" alt="護眼同樂會 QR code"></div></a><a class="ex" href="https://mattsue1003.github.io/classroom-screen/" target="_blank" rel="noopener"><div class="ph"><img src="img/ex/classroom-screen.jpg" alt="教室螢幕 畫面" loading="lazy"></div><div class="row"><span><b>教室螢幕</b><small>計時、分組、抽籤 33 個小工具</small></span><img class="q" src="img/qr/classroom-screen.svg" alt="教室螢幕 QR code"></div></a><a class="ex" href="https://mattsue1003.github.io/intergen-game-db/" target="_blank" rel="noopener"><div class="ph"><img src="img/ex/intergen-game-db.jpg" alt="幼老代間遊戲資料庫 畫面" loading="lazy"></div><div class="row"><span><b>幼老代間遊戲資料庫</b><small>37 個祖孫遊戲教案＋示範影片</small></span><img class="q" src="img/qr/intergen-game-db.svg" alt="幼老代間遊戲資料庫 QR code"></div></a><a class="ex" href="https://mattsue1003.github.io/one-set-many-games/" target="_blank" rel="noopener"><div class="ph"><img src="img/ex/one-set-many-games.jpg" alt="一題多玩 畫面" loading="lazy"></div><div class="row"><span><b>一題多玩</b><small>同一份題目，27 種遊戲模板</small></span><img class="q" src="img/qr/one-set-many-games.svg" alt="一題多玩 QR code"></div></a><a class="ex" href="https://mattsue1003.github.io/japan-dayservice-activity-videos/" target="_blank" rel="noopener"><div class="ph"><img src="img/ex/japan-dayservice-activity-videos.jpg" alt="日本日照團康影片資料庫 畫面" loading="lazy"></div><div class="row"><span><b>日本日照團康影片資料庫</b><small>350 支團康與體操，中文整理</small></span><img class="q" src="img/qr/japan-dayservice-activity-videos.svg" alt="日本日照團康影片資料庫 QR code"></div></a><a class="ex" href="https://mattsue1003.github.io/finger-database/" target="_blank" rel="noopener"><div class="ph"><img src="img/ex/finger-database.jpg" alt="手指操影片資料庫 畫面" loading="lazy"></div><div class="row"><span><b>手指操影片資料庫</b><small>50 支帶著做的示範影片</small></span><img class="q" src="img/qr/finger-database.svg" alt="手指操影片資料庫 QR code"></div></a><a class="ex" href="https://mattsue1003.github.io/temponumber/" target="_blank" rel="noopener"><div class="ph"><img src="img/ex/temponumber.jpg" alt="節奏挑戰・數字版 畫面" loading="lazy"></div><div class="row"><span><b>節奏挑戰・數字版</b><small>跟著拍子念數字，團體版</small></span><img class="q" src="img/qr/temponumber.svg" alt="節奏挑戰・數字版 QR code"></div></a></div>
 </section>
 <!-- 提示詞庫 -->
 <section class="slide" data-title="提示詞庫">
