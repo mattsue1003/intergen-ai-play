@@ -34,6 +34,11 @@ css = """
 .ex small{display:block;font-size:12.5px;color:var(--muted);line-height:1.4}
 .ex .q{width:62px;height:62px;background:#fff;border-radius:4px}
 .slide>.cols>.exgrid{display:grid;justify-content:stretch;gap:12px 14px}.slide>.cols>.typecol{justify-content:flex-start}
+.embed{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:22px;flex:1;min-height:0;max-height:560px}
+.embed iframe{width:100%;height:100%;min-height:420px;border:1px solid var(--line);border-radius:12px;background:#fff}
+.embed aside{display:flex;flex-direction:column;gap:12px}
+.cmp td,.cmp th{font-size:15px;padding:8px 10px}.cmp td:first-child{font-weight:900;white-space:nowrap;width:12%}
+.cmp th:nth-child(2){color:#1A73E8}.cmp th:nth-child(3){color:var(--ink)}
 .exgrid.tight .ex .ph{display:none}.exgrid.tight{grid-auto-rows:auto;align-content:start}
 .typecol{display:flex;flex-direction:column;gap:12px;min-width:0}
 .keys{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
@@ -62,6 +67,7 @@ css = """
 .t7 b{font-size:20px}.t7 small{font-size:14px;color:var(--muted);line-height:1.5}
 .t7 .tag{align-self:flex-start;margin-top:auto;background:var(--paper)}
 @media (max-width:900px){
+  .embed{grid-template-columns:minmax(0,1fr);max-height:none}.embed iframe{height:70vh}
   .exgrid{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:auto;max-height:none}.ex .ph{flex:none;aspect-ratio:16/10}
   .mech,.types7{grid-template-columns:minmax(0,1fr);max-height:none}.dev{grid-template-columns:minmax(0,1fr);max-height:none}
 }
@@ -126,7 +132,7 @@ S.append(f'''<!-- 1 封面 -->
   <div class="eyebrow"><span class="sq"></span>家政群科中心 研習</div>
   <h1><span class="en">PLAY <b>×</b> AI</span>玩轉世代</h1>
   <p class="lede" style="font-size:24px;color:var(--ink);font-weight:900">AI 賦能幼老代間遊戲與創意教學設計</p>
-  <p class="lede">一副 1–16 數字牌、一副撲克牌，就能玩出祖孫都能玩的遊戲。再用 Gemini、ChatGPT、OpenCode、Canva，把點子做成簡報、影片、音樂、動畫、紙本、桌遊與互動衛教七種教案。</p>
+  <p class="lede">一副 1–16 數字牌、一副撲克牌，就能玩出祖孫都能玩的遊戲。再用 Gemini、ChatGPT、OpenCode、Canva，把點子做成簡報、影片、音樂、動畫、紙本、桌遊、互動衛教、看圖猜謎八種教案。</p>
   <div class="meta">
     <div><small>日期</small><strong>11/15（日）</strong></div>
     <div><small>時間</small><strong>09:00–12:00</strong></div>
@@ -168,6 +174,21 @@ S.append('''<!-- 開始前 -->
 </section>
 ''')
 
+S.append(f'''<!-- 教室螢幕 -->
+<section class="slide" data-title="先體驗：教室螢幕">
+  <div class="eyebrow" style="--c:var(--sky)"><span class="sq"></span>先體驗　上課就用得到的小工具</div>
+  <h2>教室螢幕：計時、抽籤、分組，一個網頁全部搞定</h2>
+  <div class="embed">
+    <iframe src="{GH}classroom-screen/" title="教室螢幕 Classroom Screen" loading="lazy" allow="microphone; camera; fullscreen"></iframe>
+    <aside>
+      <a class="fbcard" href="{GH}classroom-screen/" target="_blank" rel="noopener" style="padding:14px"><img src="img/qr/classroom-screen.svg" alt="教室螢幕 QR code" style="max-width:150px"><b style="font-size:18px">手機掃描<br>或電腦開啟</b><span class="fbbtn" style="background:var(--sky)">開新視窗 ↗</span></a>
+      <div class="note" style="--c:var(--sky)"><b>試試看</b><span>點下方工具列或上方情境：計時、倒數、抽籤、分組、投票。投影到教室大螢幕就能用。</span></div>
+      <div class="note" style="--c:var(--lime)"><b>也是 AI 做的</b><span>33 個小工具，一個單一網頁，今天教的方法就做得出來。</span></div>
+    </aside>
+  </div>
+</section>
+''')
+
 S.append(f'''<!-- 暖身成品 -->
 <section class="slide" data-title="暖身：AI 做出的幼老教案">
   <div class="eyebrow" style="--c:var(--mag)"><span class="sq"></span>精選作品</div>
@@ -187,9 +208,9 @@ S.append(f'''<!-- 暖身成品 -->
 ''')
 
 S.append('''<!-- AI 怎麼選 -->
-<section class="slide" data-title="Gemini、ChatGPT、OpenCode 怎麼選">
+<section class="slide" data-title="Gemini、ChatGPT、AI 代理人怎麼選">
   <div class="eyebrow" style="--c:var(--ink)"><span class="sq"></span>今天會用到的工具</div>
-  <h2>Gemini、ChatGPT、OpenCode：做什麼教案，挑哪一個</h2>
+  <h2>Gemini、ChatGPT、AI 代理人：做什麼教案，挑哪一個</h2>
   <div class="ai3">
     <div class="box ai" style="--c:var(--blue)"><div class="ai-h"><h3>Gemini</h3><span>gemini.google.com</span></div>
       <p class="ai-best">最適合：互動網頁、讀影片、做 PPT</p>
@@ -199,10 +220,10 @@ S.append('''<!-- AI 怎麼選 -->
       <p class="ai-best">最適合：做圖、學習單、卡牌、出檔案</p>
       <ul class="bio"><li>參考喜歡的版面，畫學習單、海報、牌卡</li><li>直接產出 Word、PDF、PPT 下載</li><li>接 Canva 外掛，做好丟進 Canva 改</li></ul>
       <p class="ai3-today"><b>今天做</b>紙本教案、桌遊卡牌、工作模式做 PPT</p></div>
-    <div class="box ai" style="--c:var(--ink)"><div class="ai-h"><h3>OpenCode</h3><span>opencode.ai</span></div>
+    <div class="box ai" style="--c:var(--ink)"><div class="ai-h"><h3>代理人</h3><span>OpenCode・Antigravity</span></div>
       <p class="ai-best">最適合：一次做完一整包</p>
-      <ul class="bio"><li>AI 代理人：自己建資料夾、寫檔案、開瀏覽器</li><li>做 Google 報名表、回饋單</li><li>蒐集資料、整理教案資料夾</li></ul>
-      <p class="ai3-today"><b>今天做</b>選模型、做表單、整理資料夾、蒐集資料</p></div>
+      <ul class="bio"><li>自己建資料夾、寫檔案、開瀏覽器操作</li><li>OpenCode：多家模型、有免費模型練習</li><li>Antigravity：Google 出品，內建生圖</li></ul>
+      <p class="ai3-today"><b>今天做</b>做表單、整理資料夾、蒐集資料；比較兩個怎麼選</p></div>
   </div>
   <div class="note" style="--c:var(--amber)"><b>再加一個 Canva</b><span>AI 做的圖，字常常改不了。Canva「魔法圖層」把字和圖拆開，改成自己的內容。三家 AI 都會出錯：規則、數字、衛教說法，帶活動前自己核對。</span></div>
 </section>
@@ -460,6 +481,36 @@ S.append(keep("實作④ 參考設計做網頁型簡報",
     ("再用實作⑦放上 GitHub Pages。今天這份簡報就是這樣做出來的。", "再放上 GitHub Pages（後面會教）。今天這份簡報就是這樣做出來的。"),
     ('幫我做一份 6 頁的網頁型簡報：「ICOPE 長者量六力」，給社區醫護人員看。用左右鍵換頁、上方有頁碼和進度條，第 1 頁封面、第 2 頁用數字統計列、後面六力各一張卡片。', '幫我做一份 8 頁的網頁型簡報：「祖孫一起動一動」，給社區祖孫活動用。用左右鍵換頁、上方有頁碼和進度條，第 1 頁封面、第 2 頁用數字統計列、後面每頁一個祖孫小遊戲卡片，每張卡有「搶答」按鈕。')))
 
+S.append(typeslide("⑧", "var(--blue)", "教案設計⑧ 看圖猜謎", "看圖猜謎：一張圖，打開祖孫的話匣子",
+    ["<b>從熟悉的開始</b>：動物、植物、水果、老藝人、景點", "<b>提示一步一步給</b>：先看局部、再看全圖，孩子和長輩都猜得到", "<b>猜完再聊</b>：每題附一句提問「你在哪裡看過？」"],
+    ["ChatGPT 生圖", "Antigravity 生圖", "Canva 素材"],
+    "提示詞・看圖猜謎網頁", "幫我做一個「看圖猜台灣鳥類」網頁，給祖孫一起玩：8 題，每題先顯示模糊的圖，按「提示」逐步變清楚，三選一大按鈕，答對放煙火並顯示一句「阿公阿嬤，你在哪裡看過牠？」。圖片我會放在 images 資料夾（bird1.jpg～bird8.jpg）。繁體中文，字要大。",
+    [("guess-bird","台灣鳥朋友","互動猜鳥，附鳥類小知識"),
+     ("bug-guess","台灣昆蟲朋友","互動猜昆蟲"),
+     ("animal-guessing","動物猜猜看","看圖猜動物互動教室"),
+     ("flowers-guess","花花世界","猜花、三選一、可列印圖卡"),
+     ("oldstar-geuss-game","老藝人懷舊猜猜看","30 位老藝人，團體一起猜"),
+     ("landguess","台灣景點猜謎","看景點猜地名，帶長輩環島")], note=("代間玩法","孩子念題目、長輩說故事：猜到鳥，就請阿公分享小時候在哪裡看過。更多：看照片猜藝人、老藝人賓果、動物足跡。")))
+
+S.append('''<!-- 生圖 -->
+<section class="slide" data-title="教案設計⑧ 圖片從哪裡來：生圖比較">
+  <div class="eyebrow" style="--c:var(--blue)"><span class="sq"></span>教案設計⑧　圖片從哪裡來</div>
+  <h2>看圖猜謎要圖：哪個 AI 能把生好的圖放進網頁？</h2>
+  <div class="cols" style="--n:2;grid-template-columns:minmax(0,6fr) minmax(0,5fr)">
+    <figure class="shot" style="margin:0;height:100%"><div class="frame" style="background:var(--soft)"><img src="img/gm_bird_canvas.jpg" alt="Gemini Canvas 看圖猜鳥實測：台灣藍鵲變成簡單的向量圖"></div><figcaption><span>11/15 實測 Gemini Canvas：要它「自己生成鳥的圖片」，網頁呼叫生圖失敗，改畫成簡單的向量圖</span></figcaption></figure>
+    <div class="tbl"><table class="cmp">
+      <tr><th>工具</th><th style="color:var(--ink)">能不能生圖放進網頁</th></tr>
+      <tr><td>ChatGPT</td><td><b>可以。</b>先生圖、下載，再請它做網頁；工作模式做 PPT 會自己生圖放進去。</td></tr>
+      <tr><td>Gemini 對話</td><td><b>圖可以生</b>（Nano Banana），但 Canvas 網頁<b>放不進去</b>，常變成向量圖或空白。先在對話生圖下載，再自己放。</td></tr>
+      <tr><td>Antigravity</td><td><b>可以。</b>Google 官方說明：代理人可用 Nano Banana Pro 產生網頁圖片素材和介面草圖，存進專案再寫進網頁。</td></tr>
+      <tr><td>Claude</td><td><b>不能直接畫照片。</b>能畫 SVG 插圖；照片風的圖：接 Canva 外掛生圖，或先用 ChatGPT／Gemini 生好再上傳。</td></tr>
+      <tr><td>Canva</td><td>魔法媒體生圖、素材庫找圖，下載後放進網頁或簡報。</td></tr>
+    </table>
+    <div class="note" style="--c:var(--mag);margin-top:12px"><b>版權</b><span>老藝人、名人照片不要叫 AI 生成「像某某人」；用公開授權照片或自己拍的照片。</span></div></div>
+  </div>
+</section>
+''')
+
 # PPT
 S.append(keep("實作⑤ Gemini 做 PPT：要用「任務」",
     ("實作⑤　做簡報</div>", "做 PPT　Gemini 任務模式</div>"),
@@ -484,6 +535,63 @@ S.append(keep("實作⑧ OpenCode 代理人蒐集資料", ("實作⑧　代理�
     ('<b>說清楚：查什麼、去哪查、查不到怎麼辦</b><p>「只用政府網站」「每項附來源」「查不到寫查無資料，不要猜」這三句最重要。</p>', '<b>說清楚：查什麼、去哪查、查不到怎麼辦</b><p>「只用政府網站」「每項附來源」「查不到寫查無資料，不要猜」這三句最重要。（示範：查基隆市長者功能評估資訊）</p>'),
     ("幫我上網蒐集「（縣市）」65 歲以上長者功能評估（ICOPE 長者量六力）的官方資訊：誰可以做、多久一次、在哪裡做、要帶什麼、聯絡電話。只用政府網站（gov.tw），每一項附來源網址。整理成「資料蒐集/（縣市）ICOPE資訊.md」和一份 Excel 表。",
      "幫我上網蒐集「（縣市）」可以辦祖孫代間活動的地點與資源：社區關懷據點、樂齡學習中心、公共圖書館，以及代間活動補助計畫。只用政府網站（gov.tw），每一項附名稱、地址、電話、來源網址。整理成「資料蒐集/（縣市）代間活動資源.md」和一份 Excel 表。")))
+
+S.append('''<!-- Antigravity 比較 -->
+<section class="slide" data-title="Antigravity 和 OpenCode 差在哪">
+  <div class="eyebrow" style="--c:#1A73E8"><span class="sq"></span>AI 代理人　Google Antigravity</div>
+  <h2>Antigravity vs OpenCode：都是代理人，差在哪？</h2>
+  <div class="tbl"><table class="cmp">
+    <tr><th></th><th>Antigravity（Google）</th><th>OpenCode（開源）</th></tr>
+    <tr><td>下載</td><td>antigravity.google/download，Mac／Windows／Linux</td><td>opencode.ai，桌面版免費</td></tr>
+    <tr><td>登入</td><td>個人 Google 帳號（18 歲以上）；學校／公司帳號要管理員開放</td><td>不用帳號就能用免費模型</td></tr>
+    <tr><td>費用</td><td>免費（每週額度）；Google AI Pro 每月 19.99 美元額度較多</td><td>免費模型；OpenCode Go 約 10 美元，或接 ChatGPT 帳號</td></tr>
+    <tr><td>模型</td><td>Gemini 4 系列；付費方案另有 Claude 5.5</td><td>多家都能接：免費模型、GPT、Claude、Gemini</td></tr>
+    <tr><td>操作感</td><td><b>多個代理人同時做</b>、排程（Automations）、做事前先給計畫、做完附截圖和錄影給你看</td><td>一個資料夾一個專案，像聊天一樣下指令</td></tr>
+    <tr><td>瀏覽器</td><td>內建瀏覽器代理人，自己點網頁、測試成品</td><td>內建瀏覽器（實測自己點 111 步做好 Google 表單）</td></tr>
+    <tr><td>生圖</td><td><b>內建 Nano Banana</b>：網頁圖片、介面草圖直接生</td><td>沒有內建，要另外接</td></tr>
+    <tr><td>適合</td><td>做有圖片的網頁、簡報遊戲；想要設計流暢、一鍵 Google 登入</td><td>想比較多家模型、用免費模型練習</td></tr>
+  </table></div>
+  <div class="note" style="--c:#1A73E8"><b>結論</b><span>你記得沒錯：Antigravity 在<b>代理人操作</b>（多工、計畫、截圖驗收）和<b>設計流程</b>（生圖、看草圖再寫網頁）比較順。個案資料兩個都一樣：先去識別化。方案與模型每個月在變，以下載當天畫面為準。</span></div>
+</section>
+''')
+
+S.append('''<!-- Antigravity 畫面 -->
+<section class="slide" data-title="Antigravity 下載與畫面">
+  <div class="eyebrow" style="--c:#1A73E8"><span class="sq"></span>AI 代理人　Google Antigravity</div>
+  <h2>下載 Antigravity：左邊管專案，下面選模型就開工</h2>
+  <div class="cols" style="--n:2;grid-template-columns:minmax(0,7fr) minmax(0,4fr)">
+    <figure class="shot" style="margin:0;height:100%"><div class="frame"><img src="img/ag01_home.jpg" alt="Antigravity 主畫面：左側新對話、Automations、Projects，下方輸入框與模型選單"></div><figcaption><span>Antigravity 實機畫面（11/15）：正在做「台灣流行歌曲猜歌遊戲網頁」</span></figcaption></figure>
+    <ul class="keys" style="--c:#1A73E8">
+      <li><i>1</i><span><b>下載安裝</b>：antigravity.google/download，用個人 Google 帳號登入。<b>建議裝在桌機</b>。</span></li>
+      <li><i>2</i><span><b>New Conversation</b>：像聊天一樣說要做什麼，它會先列計畫。</span></li>
+      <li><i>3</i><span><b>Projects</b>：選一個資料夾，做好的檔案都存在這裡。</span></li>
+      <li><i>4</i><span><b>選模型</b>：輸入框左下（畫面是 Gemini 4 Argon），下一頁教怎麼選。</span></li>
+      <li><i>5</i><span><b>Default</b>：權限模式，執行指令前會問你；新手不要改成全自動。</span></li>
+      <li><i>6</i><span><b>Automations</b>：排程，例如每週一自動整理活動照片。</span></li>
+    </ul>
+  </div>
+</section>
+''')
+
+S.append('''<!-- 模型怎麼選 -->
+<section class="slide" data-title="模型怎麼選：日常、代理人、設計">
+  <div class="eyebrow" style="--c:var(--ink)"><span class="sq"></span>模型怎麼選</div>
+  <h2>Flash 快但粗：做網頁、當代理人，要換強一點的模型</h2>
+  <div class="cols" style="--n:2;grid-template-columns:minmax(0,4fr) minmax(0,7fr)">
+    <figure class="shot" style="margin:0;height:100%"><div class="frame" style="background:#0F1012"><img src="img/gm_models.jpg" alt="Gemini 模型選單：3.5 Flash-Lite、4 Hydrogen、3.1 Pro、4 Argon、4 Carbon"></div><figcaption><span>Gemini 網頁版模型選單（11/15 實機）</span></figcaption></figure>
+    <div class="tbl"><table class="cmp">
+      <tr><th>要做什麼</th><th style="color:var(--ink)">建議</th></tr>
+      <tr><td>改字、翻譯</td><td>Flash／Flash-Lite（快速解答）就夠。</td></tr>
+      <tr><td>出題、教案草稿</td><td>Gemini 4 Hydrogen（預設）、ChatGPT 預設模型。</td></tr>
+      <tr><td>讀影片、查資料</td><td>Gemini 3.1 Pro（深度研究）；實測 Flash 讀 YouTube 曾卡住不回。</td></tr>
+      <tr><td>做互動網頁、簡報遊戲</td><td>Gemini 4 Argon（程式碼與分析）；Antigravity 也選 Argon。</td></tr>
+      <tr><td>AI 代理人多步驟</td><td>Antigravity：Argon，或付費方案的 Claude 5.5。OpenCode：免費模型只練習，正式用接 ChatGPT 或 OpenCode Go。</td></tr>
+      <tr><td>好看的設計</td><td>強模型＋<b>參考截圖</b>＋圖片先生好（ChatGPT、Nano Banana）。</td></tr>
+    </table>
+    <div class="note" style="margin-top:12px"><b>3.8 Flash 很爛？</b><span>Flash 系列是為「快」設計的，做網頁、多步驟代理人容易漏東西、版面陽春，你的感覺有道理。換 Argon 或 Pro 再比一次。</span></div></div>
+  </div>
+</section>
+''')
 
 S.append(f'''<!-- 更多教案 -->
 <section class="slide" data-title="更多教案資料庫">
@@ -554,7 +662,8 @@ T7 = [("①","var(--mag)","簡報遊戲","投影搶答、看到就動","教案�
       ("④","var(--sky)","動畫","步驟動畫、反應動畫","教案設計④ 動畫"),
       ("⑤","var(--lime)","紙本","學習單、產生器、分級","教案設計⑤ 紙本"),
       ("⑥","var(--green)","桌遊卡牌","自己的主題做一副牌","教案設計⑥ 桌遊卡牌"),
-      ("⑦","var(--mag)","主題式衛教","多互動問答的網頁簡報","教案設計⑦ 主題式衛教")]
+      ("⑦","var(--mag)","主題式衛教","多互動問答的網頁簡報","教案設計⑦ 主題式衛教"),
+      ("⑧","var(--blue)","看圖猜謎","動物、植物、藝人、景點","教案設計⑧ 看圖猜謎")]
 def idx(title):
     for i, s in enumerate(S):
         if f'data-title="{esc(title)}"' in s or f'data-title="{title}"' in s: return i + 1
@@ -562,26 +671,25 @@ def idx(title):
 
 def build_types7():
     tiles = "".join(f'<a class="t7" href="#s{{{t[4]}}}" style="--c:{t[1]}"><i>{t[0]}</i><b>{t[2]}</b><small>{t[3]}</small><span class="tag">看範例 →</span></a>' for t in T7)
-    tiles += '<div class="t7" style="--c:var(--ink)"><i>＋</i><b>工具</b><small>Gemini、ChatGPT、OpenCode、Canva：每一種都附提示詞，複製就能做</small></div>'
     return f'''<!-- 七種教案 -->
-<section class="slide" data-title="七種教案設計總覽">
+<section class="slide" data-title="八種教案設計總覽">
   <div class="eyebrow" style="--c:var(--ink)"><span class="sq"></span>教案設計</div>
-  <h2>七種教案：先看範例，再教你怎麼用 AI 做</h2>
+  <h2>八種教案：先看範例，再教你怎麼用 AI 做</h2>
   <p class="lede">每一種都附 6 個範例（點卡片或掃 QR 打開）、設計重點，和一段可以直接複製的提示詞。</p>
   <div class="types7">{tiles}</div>
 </section>
 '''
 
-AG = [("var(--mag)",None,"開場：講師與今天的成品","看完就知道做得到什麼","暖身：AI 做出的幼老教案","10′"),
+AG = [("var(--mag)",None,"開場：教室螢幕體驗＋成品","計時、抽籤、分組小工具，先玩再學","先體驗：教室螢幕","10′"),
       ("var(--blue)",None,"實作①　語音輸入","Typeless（建議裝桌機）、麥克風技巧、繁體設定","實作① 語音輸入","15′"),
-      ("var(--blue)",None,"實作②　Chrome 的應用","問問 Gemini 讀資料、YouTube 讀影片","實作② Chrome 問問 Gemini","10′"),
-      ("var(--green)",None,"遊戲化教學原則","發展階梯、四大機制、1–16 數字牌、撲克牌","遊戲化原則：從發展看幼老","25′"),
-      ("var(--mag)",None,"教案①②　簡報遊戲、簡報影片","Gemini Canvas 實作、影片切段提問","七種教案設計總覽","20′"),
+      ("var(--blue)",None,"實作②　Chrome 的應用","問問 Gemini 讀資料、YouTube 讀影片","實作② Chrome 問問 Gemini","15′"),
+      ("var(--green)",None,"遊戲化教學原則","發展階梯、四大機制、1–16 數字牌、撲克牌","遊戲化原則：從發展看幼老","20′"),
+      ("var(--mag)",None,"教案①②　簡報遊戲、簡報影片","Gemini Canvas 實作、影片切段提問","八種教案設計總覽","20′"),
       ("var(--amber)","dk","教案③④　音樂互動、動畫","節奏遊戲、步驟動畫","教案設計③ 音樂互動","15′"),
-      ("var(--lime)","dk","教案⑤⑥　紙本、桌遊卡牌","ChatGPT 參考風格、Canva 魔法圖層","教案設計⑤ 紙本","20′"),
-      ("var(--mag)",None,"教案⑦　主題式衛教網頁簡報","多互動問答、參考設計","教案設計⑦ 主題式衛教","10′"),
-      ("var(--mag)",None,"做 PPT","Gemini 任務、ChatGPT 工作、NotebookLM、Canva","實作⑤ Gemini 做 PPT：要用「任務」","15′"),
-      ("var(--ink)",None,"上架＋AI 代理人 OpenCode","GitHub Pages、選模型、做表單、整理、蒐集","實作⑦ 上架 GitHub Pages","25′"),
+      ("var(--lime)","dk","教案⑤⑥　紙本、桌遊卡牌","ChatGPT 參考風格、Canva 魔法圖層","教案設計⑤ 紙本","15′"),
+      ("var(--mag)",None,"教案⑦⑧　互動衛教、看圖猜謎","參考設計、誰能生圖放進網頁","教案設計⑦ 主題式衛教","15′"),
+      ("var(--mag)",None,"做 PPT","Gemini 任務、ChatGPT 工作、NotebookLM、Canva","實作⑤ Gemini 做 PPT：要用「任務」","10′"),
+      ("var(--ink)",None,"上架＋AI 代理人","GitHub Pages、OpenCode、Antigravity、模型怎麼選","實作⑦ 上架 GitHub Pages","30′"),
       ("var(--sky)",None,"教案資料庫＋提示詞庫","帶回去直接用","更多教案資料庫","5′")]
 
 def build_agenda():
@@ -593,7 +701,7 @@ def build_agenda():
     return f'''<!-- 地圖 -->
 <section class="slide" data-title="今天的地圖">
   <div class="eyebrow" style="--c:var(--amber)"><span class="sq"></span>今天的地圖　09:00–12:00</div>
-  <h2>三小時：先學會玩，再用 AI 做出七種教案</h2>
+  <h2>三小時：先學會玩，再用 AI 做出八種教案</h2>
   <nav class="agenda" aria-label="課程地圖">{"".join(rows)}</nav>
 </section>
 '''

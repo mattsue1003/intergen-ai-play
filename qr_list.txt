@@ -50,6 +50,12 @@ finger-brain-taigi	https://mattsue1003.github.io/finger-brain-taigi/
 emotion-bear-class	https://mattsue1003.github.io/emotion-bear-class/
 essential-oil-special-kids	https://mattsue1003.github.io/essential-oil-special-kids/
 eye-health-for-seniors	https://mattsue1003.github.io/eye-health-for-seniors/
+guess-bird	https://mattsue1003.github.io/guess-bird/
+bug-guess	https://mattsue1003.github.io/bug-guess/
+animal-guessing	https://mattsue1003.github.io/animal-guessing/
+flowers-guess	https://mattsue1003.github.io/flowers-guess/
+oldstar-geuss-game	https://mattsue1003.github.io/oldstar-geuss-game/
+landguess	https://mattsue1003.github.io/landguess/
 gamelearn	https://mattsue1003.github.io/gamelearn/
 home-play-library	https://mattsue1003.github.io/home-play-library/
 sensory-play-lessons	https://mattsue1003.github.io/sensory-play-lessons/
