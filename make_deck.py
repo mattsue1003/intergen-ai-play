@@ -632,10 +632,11 @@ S.append(f'''<!-- 更多教案 -->
     ("sensory-play-lessons","感覺遊戲教案庫","100 個感覺遊戲，幼兒長輩都適用"),
     ("eye-games-for-seniors","護眼同樂會","8 種團體視力遊戲，投影帶領"),
     ("classroom-screen","教室螢幕","計時、分組、抽籤 33 個小工具"),
+    ("intergen-game-db","幼老代間遊戲資料庫","37 個祖孫遊戲教案＋示範影片"),
     ("japan-dayservice-activity-videos","日本日照團康影片資料庫","350 支團康與體操，中文整理"),
     ("finger-database","手指操影片資料庫","50 支帶著做的示範影片"),
     ("temponumber","節奏挑戰・數字版","跟著拍子念數字，團體版"),
-  ], m=4)}
+  ], m=3)}
 </section>
 ''')
 
