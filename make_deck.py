@@ -568,6 +568,22 @@ S.append('''<!-- Antigravity 比較 -->
 </section>
 ''')
 
+S.append('''<!-- 三家代理人 -->
+<section class="slide" data-title="Antigravity、ChatGPT、Claude 都能當代理人嗎">
+  <div class="eyebrow" style="--c:var(--ink)"><span class="sq"></span>AI 代理人　三家比一比</div>
+  <h2>Antigravity、ChatGPT、Claude：三家都能當代理人，入口不一樣</h2>
+  <div class="tbl"><table class="cmp">
+    <tr><th></th><th>Antigravity（Google）</th><th style="color:#10A37F">ChatGPT（OpenAI）</th><th style="color:#C2410C">Claude（Anthropic）</th></tr>
+    <tr><td>入口</td><td>Antigravity App（要下載）</td><td>對話框上方切「工作」；電腦版 App 裡的 Codex</td><td>Claude 電腦版 App（Cowork）、Claude in Chrome 外掛、Claude Code</td></tr>
+    <tr><td>能幫你做</td><td>多個代理人同時做；建資料夾、寫網頁；內建瀏覽器測試；內建生圖</td><td>「工作」：長任務、查資料、做出 Word／Excel／PPT 成品；Codex：在 Mac 上操作 App</td><td>讀寫電腦裡的資料夾、用瀏覽器、操作電腦上的 App（測試版，每個 App 先問你）</td></tr>
+    <tr><td>網頁登入</td><td>App 用內建瀏覽器；也能接你自己的 Chrome</td><td>「工作」用雲端瀏覽器，<b>不能</b>用你已登入的網站（舊的「代理人模式」已停用）</td><td>Chrome 外掛在<b>你自己的</b> Chrome 裡操作，已登入的網站也行；銀行、健保等敏感網站不要交給它</td></tr>
+    <tr><td>費用</td><td>免費版有每週額度</td><td>依方案，以自己帳號畫面為準</td><td>Cowork、Chrome 外掛要<b>付費方案</b>（Pro 起）</td></tr>
+    <tr><td>最適合</td><td>做有圖片的網頁、遊戲教案</td><td>要一份可以交出去的檔案</td><td>整理電腦裡的教案、在瀏覽器裡代辦；這份簡報就是用 Claude 電腦版做的</td></tr>
+  </table></div>
+  <div class="note" style="--c:var(--ink)"><b>共同原則</b><span>代理人會真的動你的檔案和帳號：先給一個<b>練習用資料夾</b>、要它<b>先列計畫</b>、登入和付款<b>自己來</b>、做完<b>自己驗收</b>。功能和方案每個月在變（11/15 查證）。</span></div>
+</section>
+''')
+
 S.append('''<!-- Antigravity 畫面 -->
 <section class="slide" data-title="Antigravity 下載與畫面">
   <div class="eyebrow" style="--c:#1A73E8"><span class="sq"></span>AI 代理人　Google Antigravity</div>
