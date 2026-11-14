@@ -174,6 +174,19 @@ S.append('''<!-- 開始前 -->
 </section>
 ''')
 
+S.append(f'''<!-- 先玩一下 -->
+<section class="slide" data-title="先玩一下：猜歌、好味島、馬賽克">
+  <div class="eyebrow" style="--c:var(--mag)"><span class="sq"></span>先玩一下　掃 QR 或看大螢幕一起猜</div>
+  <h2>先當學員玩三題：老歌、家鄉味、馬賽克景點</h2>
+  {exs([
+    ("pop-song-guess","台灣金曲猜歌","聽前奏猜歌名：選一個年代，祖孫一起搶答"),
+    ("taiwan-taste-island","台灣好味島","3D 台灣島：點縣市看名產，聊家鄉味"),
+    ("mosaic-animation","馬賽克猜景點","馬賽克慢慢變清楚，猜台灣著名景點；也能上傳自己的圖"),
+  ], m=3)}
+  <div class="note" style="--c:var(--mag)"><b>玩完想一想</b><span>它用了哪個機制？猜歌＝線索、好味島＝連結已知、馬賽克＝線索一步一步給。等一下就教大家怎麼用 AI 做出來。</span></div>
+</section>
+''')
+
 S.append(f'''<!-- 教室螢幕 -->
 <section class="slide" data-title="先體驗：教室螢幕">
   <div class="eyebrow" style="--c:var(--sky)"><span class="sq"></span>先體驗　上課就用得到的小工具</div>
@@ -680,7 +693,7 @@ def build_types7():
 </section>
 '''
 
-AG = [("var(--mag)",None,"開場：教室螢幕體驗＋成品","計時、抽籤、分組小工具，先玩再學","先體驗：教室螢幕","10′"),
+AG = [("var(--mag)",None,"開場：先玩再學","猜歌、好味島、馬賽克景點，教室螢幕小工具","先玩一下：猜歌、好味島、馬賽克","10′"),
       ("var(--blue)",None,"實作①　語音輸入","Typeless（建議裝桌機）、麥克風技巧、繁體設定","實作① 語音輸入","15′"),
       ("var(--blue)",None,"實作②　Chrome 的應用","問問 Gemini 讀資料、YouTube 讀影片","實作② Chrome 問問 Gemini","15′"),
       ("var(--green)",None,"遊戲化教學原則","發展階梯、四大機制、1–16 數字牌、撲克牌","遊戲化原則：從發展看幼老","20′"),

@@ -1,3 +1,6 @@
+pop-song-guess	https://mattsue1003.github.io/pop-song-guess/
+taiwan-taste-island	https://mattsue1003.github.io/taiwan-taste-island/
+mosaic-animation	https://mattsue1003.github.io/mosaic-animation/
 1-16-plus	https://mattsue1003.github.io/1-16-plus/
 1-16number	https://mattsue1003.github.io/1-16number/
 3x3numberg	https://mattsue1003.github.io/3x3numberg/
@@ -24,7 +27,6 @@ god-eye-lessons	https://mattsue1003.github.io/god-eye-lessons/
 kokedama-lessons	https://mattsue1003.github.io/kokedama-lessons/
 functional-training-lesson	https://mattsue1003.github.io/functional-training-lesson/
 cholesterol-video-lesson	https://mattsue1003.github.io/cholesterol-video-lesson/
-pop-song-guess	https://mattsue1003.github.io/pop-song-guess/
 beatgame2	https://mattsue1003.github.io/beatgame2/
 rhythmexercise	https://mattsue1003.github.io/rhythmexercise/
 oldsongdance	https://mattsue1003.github.io/oldsongdance/
