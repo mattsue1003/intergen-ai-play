@@ -94,13 +94,7 @@ pop-art-coloring	https://mattsue1003.github.io/pop-art-coloring/
 mandala-lessons	https://mattsue1003.github.io/mandala-lessons/
 tangle-steps	https://mattsue1003.github.io/tangle-steps/
 paper-cut-workshop	https://mattsue1003.github.io/paper-cut-workshop/
-torn-paper-mosaic	https://mattsue1003.github.io/torn-paper-mosaic/
-fingerprint-swab-art	https://mattsue1003.github.io/fingerprint-swab-art/
-quilling-lessons	https://mattsue1003.github.io/quilling-lessons/
 gods-eye-weaving	https://mattsue1003.github.io/gods-eye-weaving/
-plate-weaving-pipecleaner	https://mattsue1003.github.io/plate-weaving-pipecleaner/
-square-knot-bracelet	https://mattsue1003.github.io/square-knot-bracelet/
-clay-modeling-lessons	https://mattsue1003.github.io/clay-modeling-lessons/
 seniorart	https://mattsue1003.github.io/seniorart/
 art-senior-database	https://mattsue1003.github.io/art-senior-database/
 gamelearn	https://mattsue1003.github.io/gamelearn/

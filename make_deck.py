@@ -675,31 +675,9 @@ S.append(typeslide("⑩", "var(--mag)", "教案設計⑩ 藝術創作", "藝術�
     [("mandala-lessons","曼陀羅一圈一圈畫","24 課步驟動畫＋A4 底稿"),
      ("tangle-steps","纏繞畫步驟示範","13 種圖樣一筆一筆畫"),
      ("paper-cut-workshop","對摺剪紙工坊","16 課剪紙動畫＋A4 圖樣"),
-     ("torn-paper-mosaic","撕貼畫・馬賽克","24 課撕紙拼貼動畫"),
-     ("fingerprint-swab-art","指紋棉花棒創作","36 課點點畫步驟"),
-     ("quilling-lessons","衍紙・捲紙教案","10 種捲法＋21 課")], note=("代間玩法","祖孫各畫半邊曼陀羅，交換再加一圈；孩子選顏色、長輩描線條。"), easy=[('mandala-generator', '曼陀羅著色畫', '一鍵出圖，印了就塗'), ('zentangle-practice', '纏繞畫練習單', '照著格子描'), ('pop-art-coloring', '圓點藝術著色', '點點塗滿就好看')]))
-
-S.append(f'''<!-- 藝術創作：更多手作動畫＋資料庫 -->
-<section class="slide" data-title="教案⑩ 更多手作動畫＋藝術資料庫">
-  <div class="eyebrow" style="--c:var(--mag)"><span class="sq"></span>教案設計⑩　藝術創作：更多手作＋資料庫</div>
-  <h2>編織、黏土、手環也能做成步驟動畫；找題材看藝術資料庫</h2>
-  <div class="cols" style="--n:2;grid-template-columns:minmax(0,8fr) minmax(0,3fr)">
-    {exs([
-      ("gods-eye-weaving","上帝之眼編織","3D 繞線動畫 24 步"),
-      ("plate-weaving-pipecleaner","紙盤編織・毛根造型","12 課動畫＋實際大小模板"),
-      ("square-knot-bracelet","平結手環","12 課半結動畫＋1:1 對照尺"),
-      ("clay-modeling-lessons","輕黏土造型教案","8 基本功＋24 主題，3D 轉動看"),
-      ("seniorart","樂藝銀齡・長者藝術教案資料庫","藝術教案依主題、材料找"),
-      ("art-senior-database","長者手工藝教案資料庫","手工藝教案一次找齊"),
-    ], m=3)}
-    <div style="display:flex;flex-direction:column;gap:12px;min-width:0">
-      <div class="note" style="--c:var(--mag);flex-direction:column;align-items:stretch;gap:6px"><b>為什麼放最後</b><span>藝術步驟動畫最難做：要算比例、畫筆順、對齊 A4 實際大小。先用上一頁「最簡單先上手」的生成器練手，再挑一課做動畫。</span></div>
-      <div class="note" style="--c:var(--amber);flex-direction:column;align-items:stretch;gap:6px"><b>做法提醒</b><span>編織、繞線這類立體手作，直接請 AI 做 3D 動畫（three.js）比平面圖看得懂；線不能穿過線，要一圈一圈檢查。</span></div>
-      <div class="note" style="--c:var(--blue);flex-direction:column;align-items:stretch;gap:6px"><b>帶活動</b><span>投影動畫當示範，每桌一張 A4 底稿；長輩做慢一點，按「重播」就好。</span></div>
-    </div>
-  </div>
-</section>
-''')
+     ("gods-eye-weaving","上帝之眼編織","3D 繞線動畫 24 步"),
+     ("seniorart","樂藝銀齡・長者藝術教案資料庫","藝術教案依主題、材料找"),
+     ("art-senior-database","長者手工藝教案資料庫","手工藝教案一次找齊")], note=("代間玩法","祖孫各畫半邊曼陀羅，交換再加一圈；孩子選顏色、長輩描線條。"), easy=[('mandala-generator', '曼陀羅著色畫', '一鍵出圖，印了就塗'), ('zentangle-practice', '纏繞畫練習單', '照著格子描'), ('pop-art-coloring', '圓點藝術著色', '點點塗滿就好看')]))
 
 S.append(f'''<!-- 更多教案 -->
 <section class="slide" data-title="更多教案資料庫">
@@ -802,7 +780,7 @@ AG = [("var(--mag)",None,"開場：先玩再學","猜歌、好味島、馬賽克
       ("var(--green)",None,"教案⑦⑧⑨　桌遊卡牌、互動衛教、看圖猜謎","一副牌、參考設計、誰能生圖放進網頁","教案設計⑦ 桌遊卡牌","15′"),
       ("var(--mag)",None,"做 PPT","Gemini 任務、ChatGPT 工作、NotebookLM、Canva","實作⑤ Gemini 做 PPT：要用「任務」","10′"),
       ("var(--ink)",None,"上架＋AI 代理人","GitHub Pages、OpenCode、Antigravity、模型怎麼選","實作⑦ 上架 GitHub Pages","20′"),
-      ("var(--mag)",None,"教案⑩　藝術創作（最難）","曼陀羅、纏繞畫、剪紙、編織步驟動畫","教案設計⑩ 藝術創作","10′"),
+      ("var(--mag)",None,"教案⑩　藝術創作（最難）","曼陀羅、纏繞畫、剪紙、上帝之眼＋藝術資料庫","教案設計⑩ 藝術創作","10′"),
       ("var(--sky)",None,"教案資料庫＋提示詞庫","帶回去直接用","更多教案資料庫","5′")]
 
 def build_agenda():
