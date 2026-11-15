@@ -146,7 +146,7 @@ S.append(f'''<!-- 1 封面 -->
   <div class="eyebrow"><span class="sq"></span>家政群科中心 研習</div>
   <h1><span class="en">PLAY <b>×</b> AI</span>玩轉世代</h1>
   <p class="lede" style="font-size:24px;color:var(--ink);font-weight:900">AI 賦能幼老代間遊戲與創意教學設計</p>
-  <p class="lede">一副 1–16 數字牌、一副撲克牌，就能玩出祖孫都能玩的遊戲。再用 Gemini、ChatGPT、OpenCode、Canva，把點子做成簡報、影片、音樂、動畫、紙本、桌遊、互動衛教、看圖猜謎九種教案。</p>
+  <p class="lede">一副 1–16 數字牌、一副撲克牌，就能玩出祖孫都能玩的遊戲。再用 Gemini、ChatGPT、OpenCode、Canva，把點子做成簡報遊戲、遊戲團康、影片、音樂、動畫、紙本、桌遊、互動衛教、看圖猜謎、藝術創作十種教案。</p>
   <div class="meta">
     <div><small>日期</small><strong>11/15（日）</strong></div>
     <div><small>時間</small><strong>09:00–12:00</strong></div>
@@ -478,15 +478,15 @@ S.append(typeslide("④", "var(--amber)", "教案設計④ 音樂互動", "音�
      ("oldsongdata","長者回憶高峰金曲 200","依年代找長輩年輕時的歌")], note=("代間玩法","阿嬤唱一句老歌、孫子接一句兒歌；節奏遊戲請孩子當指揮。"), easy=[('musicguess', '音樂猜猜看', '聽前奏猜金曲'), ('temponumber', '節奏挑戰', '跟拍子念數字'), ('runmath', '算數超慢跑節拍器', '踏步加算數')]))
 
 S.append(typeslide("⑤", "var(--sky)", "教案設計⑤ 動畫", "動畫教案：步驟一步一步動給你看",
-    ["<b>手作步驟動畫</b>：剪紙、繞線、畫畫，比看照片好懂", "<b>反應動畫</b>：看到相反詞、指令就做動作", "<b>可調速度</b>：長輩慢一點、孩子快一點，同一個畫面"],
+    ["<b>步驟動畫</b>：動作一步一步出現，比看照片好懂", "<b>反應動畫</b>：看到相反詞、指令就做動作", "<b>可調速度</b>：長輩慢一點、孩子快一點，同一個畫面"],
     ["Gemini Canvas", "OpenCode 做一整套", "ChatGPT 畫步驟圖"],
     "提示詞・步驟動畫網頁", "幫我做一個步驟動畫網頁：「對摺剪一顆愛心」，共 5 步（對摺、畫半邊、沿線剪、打開、裝飾）。每一步用 SVG 動畫畫出紙張和剪刀的動作，下方一行大字說明，有上一步／下一步／重播按鈕與速度調整。繁體中文。",
     [("contrast-animation","相反詞動畫訓練","設定節奏與程度，全螢幕帶團"),
      ("cogniciseanimation","群體節奏自訂指令訓練器","自訂指令，跟著節奏做"),
      ("visual234","視力活動檢測動畫","張大眼睛一起玩"),
-     ("paper-cut-workshop","對摺剪紙工坊","16 課剪紙步驟動畫＋A4 圖樣"),
-     ("mandala-lessons","曼陀羅一圈一圈畫","24 課步驟動畫＋學習單"),
-     ("gods-eye-weaving","上帝之眼編織","3D 繞線動畫 24 步")], note=("代間玩法","孩子看動畫當小老師，一步一步教阿公阿嬤做；做完交換作品。"), easy=[('cognicise', '體智活動隨機生成器', '一按出一個動作'), ('picturecognicise', '體智動畫產生器', '放圖片變動畫'), ('cognicisealternate', '體智交替計時器', '動、停輪流計時')]))
+     ("cognitive-reaction-animation","反應動作動畫產生器","帶團設定，看到就做動作"),
+     ("animationgeneration","體智活動動畫產生器","動作排成動畫，跟著做"),
+     ("recovery-village","芽芽村的復元任務","3D 村莊闖關動畫")], note=("代間玩法","孩子看動畫當小老師，一步一步帶阿公阿嬤做；再交換當老師。"), easy=[('cognicise', '體智活動隨機生成器', '一按出一個動作'), ('picturecognicise', '體智動畫產生器', '放圖片變動畫'), ('cognicisealternate', '體智交替計時器', '動、停輪流計時')]))
 
 S.append(typeslide("⑥", "var(--lime)", "教案設計⑥ 紙本", "紙本教案：印出來就能玩，回家還能繼續",
     ["<b>產生器</b>：一鍵換題目，每桌拿到不一樣的", "<b>分級</b>：同一張學習單出簡單版、挑戰版", "<b>參考版面</b>：找喜歡的學習單截圖給 AI，做出同風格"],
@@ -496,7 +496,7 @@ S.append(typeslide("⑥", "var(--lime)", "教案設計⑥ 紙本", "紙本教案
      ("dot-copy-drawing","點格仿畫・運筆練習","333 題 A4 紙本"),
      ("dot-to-dot-lessons","連點成畫","24 課連連看動畫＋學習單"),
      ("new-bingo-generator","賓果生成器","骰子賓果、主題賓果卡"),
-     ("tangle-steps","纏繞畫步驟示範","13 種圖樣一筆一筆畫"),
+     ("crossword-puzzle-paper","填字遊戲紙本","自己的詞做成 A4 填字"),
      ("fold-4x4-game","16 格數字摺紙","4×4 紙格摺出指定數字")],
     note=("代間玩法","同一張學習單出祖孫兩個難度。接下來 4 頁：參考風格做學習單、Canva 改字、Gemini 免費做圖。"), easy=[('countnumber', '眼花撩亂', '找一找、數一數，下載 PDF'), ('pen3x3', '3×3 運筆練習', '照著連線'), ('wrongword', '找錯字紙本', '圈出錯的字')]))
 
@@ -668,6 +668,39 @@ S.append('''<!-- 模型怎麼選 -->
 </section>
 ''')
 
+S.append(typeslide("⑩", "var(--mag)", "教案設計⑩ 藝術創作", "藝術創作：曼陀羅、纏繞畫，一筆一筆動給你看",
+    ["<b>一筆一動畫</b>：每一筆、每一折都看得到，跟著做不會亂", "<b>實際大小底稿</b>：A4 印出來就是 1:1，照著描、照著剪", "<b>同主題分難度</b>：長輩做基本款、孩子加花樣，作品並排展"],
+    ["Claude／OpenCode 做步驟動畫", "ChatGPT 畫完成圖", "A4 底稿 PDF"],
+    "提示詞・曼陀羅步驟動畫", "幫我做一個曼陀羅步驟動畫網頁：在圓形底稿上一圈一圈畫出 8 等分圖樣，共 6 步（畫十字輔助線、內圈花瓣、第二圈半圓、第三圈三角、外圈點點、著色）。每一步用 SVG 筆畫動畫一筆一筆畫出來，下方一行大字說明，有上一步／下一步／重播和速度調整，另有「下載 A4 底稿」按鈕。字要大，繁體中文。",
+    [("mandala-lessons","曼陀羅一圈一圈畫","24 課步驟動畫＋A4 底稿"),
+     ("tangle-steps","纏繞畫步驟示範","13 種圖樣一筆一筆畫"),
+     ("paper-cut-workshop","對摺剪紙工坊","16 課剪紙動畫＋A4 圖樣"),
+     ("torn-paper-mosaic","撕貼畫・馬賽克","24 課撕紙拼貼動畫"),
+     ("fingerprint-swab-art","指紋棉花棒創作","36 課點點畫步驟"),
+     ("quilling-lessons","衍紙・捲紙教案","10 種捲法＋21 課")], note=("代間玩法","祖孫各畫半邊曼陀羅，交換再加一圈；孩子選顏色、長輩描線條。"), easy=[('mandala-generator', '曼陀羅著色畫', '一鍵出圖，印了就塗'), ('zentangle-practice', '纏繞畫練習單', '照著格子描'), ('pop-art-coloring', '圓點藝術著色', '點點塗滿就好看')]))
+
+S.append(f'''<!-- 藝術創作：更多手作動畫＋資料庫 -->
+<section class="slide" data-title="教案⑩ 更多手作動畫＋藝術資料庫">
+  <div class="eyebrow" style="--c:var(--mag)"><span class="sq"></span>教案設計⑩　藝術創作：更多手作＋資料庫</div>
+  <h2>編織、黏土、手環也能做成步驟動畫；找題材看藝術資料庫</h2>
+  <div class="cols" style="--n:2;grid-template-columns:minmax(0,8fr) minmax(0,3fr)">
+    {exs([
+      ("gods-eye-weaving","上帝之眼編織","3D 繞線動畫 24 步"),
+      ("plate-weaving-pipecleaner","紙盤編織・毛根造型","12 課動畫＋實際大小模板"),
+      ("square-knot-bracelet","平結手環","12 課半結動畫＋1:1 對照尺"),
+      ("clay-modeling-lessons","輕黏土造型教案","8 基本功＋24 主題，3D 轉動看"),
+      ("seniorart","樂藝銀齡・長者藝術教案資料庫","藝術教案依主題、材料找"),
+      ("art-senior-database","長者手工藝教案資料庫","手工藝教案一次找齊"),
+    ], m=3)}
+    <div style="display:flex;flex-direction:column;gap:12px;min-width:0">
+      <div class="note" style="--c:var(--mag);flex-direction:column;align-items:stretch;gap:6px"><b>為什麼放最後</b><span>藝術步驟動畫最難做：要算比例、畫筆順、對齊 A4 實際大小。先用上一頁「最簡單先上手」的生成器練手，再挑一課做動畫。</span></div>
+      <div class="note" style="--c:var(--amber);flex-direction:column;align-items:stretch;gap:6px"><b>做法提醒</b><span>編織、繞線這類立體手作，直接請 AI 做 3D 動畫（three.js）比平面圖看得懂；線不能穿過線，要一圈一圈檢查。</span></div>
+      <div class="note" style="--c:var(--blue);flex-direction:column;align-items:stretch;gap:6px"><b>帶活動</b><span>投影動畫當示範，每桌一張 A4 底稿；長輩做慢一點，按「重播」就好。</span></div>
+    </div>
+  </div>
+</section>
+''')
+
 S.append(f'''<!-- 更多教案 -->
 <section class="slide" data-title="更多教案資料庫">
   <div class="eyebrow" style="--c:var(--sky)"><span class="sq"></span>帶回去用</div>
@@ -741,7 +774,8 @@ T7 = [("①","var(--mag)","簡報遊戲","投影搶答、看到就動","教案�
       ("⑥","var(--lime)","紙本","學習單、產生器、分級","教案設計⑥ 紙本"),
       ("⑦","var(--green)","桌遊卡牌","自己的主題做一副牌","教案設計⑦ 桌遊卡牌"),
       ("⑧","var(--mag)","主題式衛教","多互動問答的網頁簡報","教案設計⑧ 主題式衛教"),
-      ("⑨","var(--blue)","看圖猜謎","動物、植物、藝人、景點","教案設計⑨ 看圖猜謎")]
+      ("⑨","var(--blue)","看圖猜謎","動物、植物、藝人、景點","教案設計⑨ 看圖猜謎"),
+      ("⑩","var(--mag)","藝術創作","曼陀羅、纏繞畫、剪紙手作","教案設計⑩ 藝術創作")]
 def idx(title):
     for i, s in enumerate(S):
         if f'data-title="{esc(title)}"' in s or f'data-title="{title}"' in s: return i + 1
@@ -750,9 +784,9 @@ def idx(title):
 def build_types7():
     tiles = "".join(f'<a class="t7" href="#s{{{t[4]}}}" style="--c:{t[1]}"><i>{t[0]}</i><b>{t[2]}</b><small>{t[3]}</small><span class="tag">看範例 →</span></a>' for t in T7)
     return f'''<!-- 七種教案 -->
-<section class="slide" data-title="九種教案設計總覽">
+<section class="slide" data-title="十種教案設計總覽">
   <div class="eyebrow" style="--c:var(--ink)"><span class="sq"></span>教案設計</div>
-  <h2>九種教案：先看範例，再教你怎麼用 AI 做</h2>
+  <h2>十種教案：先看範例，再教你怎麼用 AI 做</h2>
   <p class="lede">每一種都有「最簡單先上手」的入門範例＋6 個進階範例（點卡片或掃 QR 打開）、設計重點，和一段可以直接複製的提示詞。</p>
   <div class="types7">{tiles}</div>
 </section>
@@ -762,12 +796,13 @@ AG = [("var(--mag)",None,"開場：先玩再學","猜歌、好味島、馬賽克
       ("var(--blue)",None,"實作①　語音輸入","Typeless（建議裝桌機）、麥克風技巧、繁體設定","實作① 語音輸入","15′"),
       ("var(--blue)",None,"實作②　Chrome 的應用","問問 Gemini 讀資料、YouTube 讀影片","實作② Chrome 問問 Gemini","15′"),
       ("var(--green)",None,"遊戲化教學原則","發展階梯、四大機制、1–16 數字牌、撲克牌","遊戲化原則：從發展看幼老","20′"),
-      ("var(--mag)",None,"教案①②　簡報遊戲、遊戲團康","Gemini Canvas 實作、傳炸彈、對對碰","九種教案設計總覽","20′"),
+      ("var(--mag)",None,"教案①②　簡報遊戲、遊戲團康","Gemini Canvas 實作、傳炸彈、對對碰","十種教案設計總覽","20′"),
       ("var(--blue)",None,"教案③④　簡報影片、音樂互動","影片切段提問、節奏遊戲","教案設計③ 簡報影片","15′"),
       ("var(--lime)","dk","教案⑤⑥　動畫、紙本","步驟動畫、ChatGPT 參考風格、Canva 魔法圖層","教案設計⑤ 動畫","15′"),
-      ("var(--green)",None,"教案⑦⑧⑨　桌遊卡牌、互動衛教、看圖猜謎","一副牌、參考設計、誰能生圖放進網頁","教案設計⑦ 桌遊卡牌","20′"),
+      ("var(--green)",None,"教案⑦⑧⑨　桌遊卡牌、互動衛教、看圖猜謎","一副牌、參考設計、誰能生圖放進網頁","教案設計⑦ 桌遊卡牌","15′"),
       ("var(--mag)",None,"做 PPT","Gemini 任務、ChatGPT 工作、NotebookLM、Canva","實作⑤ Gemini 做 PPT：要用「任務」","10′"),
-      ("var(--ink)",None,"上架＋AI 代理人","GitHub Pages、OpenCode、Antigravity、模型怎麼選","實作⑦ 上架 GitHub Pages","25′"),
+      ("var(--ink)",None,"上架＋AI 代理人","GitHub Pages、OpenCode、Antigravity、模型怎麼選","實作⑦ 上架 GitHub Pages","20′"),
+      ("var(--mag)",None,"教案⑩　藝術創作（最難）","曼陀羅、纏繞畫、剪紙、編織步驟動畫","教案設計⑩ 藝術創作","10′"),
       ("var(--sky)",None,"教案資料庫＋提示詞庫","帶回去直接用","更多教案資料庫","5′")]
 
 def build_agenda():
@@ -779,7 +814,7 @@ def build_agenda():
     return f'''<!-- 地圖 -->
 <section class="slide" data-title="今天的地圖">
   <div class="eyebrow" style="--c:var(--amber)"><span class="sq"></span>今天的地圖　09:00–12:00</div>
-  <h2>三小時：先學會玩，再用 AI 做出九種教案</h2>
+  <h2>三小時：先學會玩，再用 AI 做出十種教案</h2>
   <nav class="agenda" aria-label="課程地圖">{"".join(rows)}</nav>
 </section>
 '''
@@ -794,5 +829,31 @@ for a, b in RETITLE.items():
     body = body.replace(f'data-title="{a}"', f'data-title="{b}"')
 mins = sum(int(a[5][:-1]) for a in AG) + 10
 print("agenda minutes", mins, "slides", len(S))
-(ROOT / "deck.html").write_text(head + body + tail)
+FIX_CSS = """<style>
+/* 審查修正 11/15：手機版 */
+@media (max-width:900px){
+  body.scroll .slide>.cols{max-height:none!important}
+  body.scroll .slide>.cols>figure.shot{height:auto!important}
+  .note{flex-direction:column;align-items:stretch!important;gap:4px}
+  .note>*{text-align:left}
+  .copy{min-height:36px;padding:6px 16px;font-size:13px}
+  .cover h2[style*="font-size:44px"]{font-size:30px!important}
+  .tbl:has(table.cards){overflow:visible}
+  table.cmp.cards tr.hd{display:none}
+  table.cmp.cards,table.cmp.cards tbody,table.cmp.cards tr,table.cmp.cards td{display:block;width:auto!important}
+  table.cmp.cards tr{border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin-bottom:10px;background:var(--paper)}
+  table.cmp.cards td{border:0;padding:4px 0;white-space:normal!important}
+  table.cmp.cards td:first-child{font-size:17px;padding-bottom:6px;margin-bottom:4px;border-bottom:1px solid var(--line)}
+  table.cmp.cards td[data-label]::before{content:attr(data-label);display:block;font-size:12px;font-weight:800;letter-spacing:.04em;color:var(--lc,var(--muted))}
+}
+</style>
+"""
+FIX_JS = """<script>
+document.querySelectorAll('table.cmp').forEach(function(t){var hr=t.rows[0];if(!hr)return;var hs=[].slice.call(hr.cells);if(hs.length<3||hs[0].tagName!=='TH')return;t.classList.add('cards');hr.classList.add('hd');
+  [].slice.call(t.rows,1).forEach(function(r){[].slice.call(r.cells).forEach(function(c,j){if(j>0&&hs[j]){c.dataset.label=hs[j].textContent.trim();c.style.setProperty('--lc',getComputedStyle(hs[j]).color)}})})});
+</script>
+"""
+out = head + body + FIX_CSS + tail + FIX_JS
+out = out.replace("left:4%;top:88%;width:22px;height:22px;background:var(--lime)", "left:93%;top:72%;width:22px;height:22px;background:var(--lime)")
+(ROOT / "deck.html").write_text(out)
 (ROOT / "qr_list.txt").write_text("\n".join(f"{a}\t{b}" for a, b in dict(QR_LIST).items()))
